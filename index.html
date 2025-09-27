@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeLab Integration Project Charter</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+      :root {
+        /* Hacker Color Palette */
+        --matrix-green: #00ff41;
+        --neon-cyan: #00ffff;
+        --electric-purple: #bf00ff;
+        --hot-pink: #ff1493;
+        --laser-orange: #ff6600;
+        --warning-yellow: #ffff00;
+
+        /* Dark Theme Base */
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #111111;
+        --bg-tertiary: #1a1a1a;
+        --bg-card: #161616;
+        --bg-glass: rgba(22, 22, 22, 0.9);
+
+        /* Text Colors */
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --text-muted: #666666;
+        --text-accent: var(--matrix-green);
+
+        /* Gradients */
+        --gradient-primary: linear-gradient(
+          135deg,
+          var(--matrix-green) 0%,
+          var(--neon-cyan) 100%
+        );
+        --gradient-secondary: linear-gradient(
+          135deg,
+          var(--electric-purple) 0%,
+          var(--hot-pink) 100%
+        );
+        --gradient-accent: linear-gradient(
+          135deg,
+          var(--laser-orange) 0%,
+          var(--warning-yellow) 100%
+        );
+        --gradient-danger: linear-gradient(135deg, #ff0040 0%, #ff6600 100%);
+
+        /* Effects */
+        --glow-green: 0 0 20px rgba(0, 255, 65, 0.5);
+        --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+        --glow-purple: 0 0 20px rgba(191, 0, 255, 0.5);
+        --shadow-hack: 0 8px 32px rgba(0, 0, 0, 0.8);
+
+        --border-radius: 12px;
+        --border-radius-small: 6px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Animations */
+        --pulse-duration: 2s;
+        --glitch-duration: 0.1s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Matrix Background Effect */
+      .matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background: var(--bg-primary);
+      }
+
+      .matrix-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(0, 255, 65, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(0, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(191, 0, 255, 0.05) 0%,
+            transparent 50%
+          );
+        animation: matrixShift 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes matrixShift {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(-10px, -10px) scale(1.02);
+        }
+      }
+
+      /* Floating Particles */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: var(--matrix-green);
+        border-radius: 50%;
+        animation: float 15s linear infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Navigation */
+      .nav-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 10px;
+      }
+
+      .nav-btn {
+        background: var(--bg-glass);
+        border: 1px solid var(--matrix-green);
+        padding: 8px 12px;
+        border-radius: var(--border-radius-small);
+        color: var(--matrix-green);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-btn:hover {
+        background: var(--matrix-green);
+        color: var(--bg-primary);
+        box-shadow: var(--glow-green);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+      }
+
+      /* Hero Section - Hacker Style */
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem 6rem;
+        background: var(--bg-glass);
+        border: 1px solid var(--matrix-green);
+        border-radius: var(--border-radius);
+        margin-bottom: 4rem;
+        backdrop-filter: blur(20px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient-primary);
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+          box-shadow: var(--glow-green);
+        }
+      }
+
+      .hero-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        text-shadow: var(--glow-green);
+        position: relative;
+      }
+
+      .hero-title::after {
+        content: "_";
+        animation: blink 1s infinite;
+        color: var(--matrix-green);
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .hero-subtitle {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.2rem;
+        color: var(--neon-cyan);
+        font-weight: 500;
+        margin-bottom: 3rem;
+        text-transform: lowercase;
+        letter-spacing: 2px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat-card {
+        background: var(--bg-glass);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--neon-cyan);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 255, 0.1),
+          transparent
+        );
+        transition: var(--transition);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--glow-cyan);
+        border-color: var(--matrix-green);
+      }
+
+      .stat-card:hover::before {
+        left: 100%;
+      }
+
+      .stat-number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: block;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+      }
+
+      /* Student Info Cards */
+      .student-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .info-card {
+        background: var(--bg-glass);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--electric-purple);
+        backdrop-filter: blur(20px);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: var(--glow-purple);
+      }
+
+      .info-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+        filter: hue-rotate(120deg);
+      }
+
+      .info-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--hot-pink);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .info-value {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      /* Collapsible Sections */
+      .section {
+        background: var(--bg-glass);
+        margin-bottom: 2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--text-muted);
+        backdrop-filter: blur(20px);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .section.expanded {
+        border-color: var(--matrix-green);
+        box-shadow: var(--glow-green);
+      }
+
+      .section-header {
+        padding: 1.5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary) 0%,
+          var(--bg-tertiary) 100%
+        );
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--text-muted);
+        transition: var(--transition);
+      }
+
+      .section-header:hover {
+        background: linear-gradient(
+          135deg,
+          var(--bg-tertiary) 0%,
+          var(--bg-card) 100%
+        );
+      }
+
+      .section.expanded .section-header {
+        border-bottom-color: var(--matrix-green);
+      }
+
+      .section-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0;
+      }
+
+      .section-title .emoji {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        background: var(--gradient-primary);
+        border-radius: var(--border-radius-small);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .collapse-indicator {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.2rem;
+        color: var(--matrix-green);
+        transition: var(--transition);
+      }
+
+      .section.expanded .collapse-indicator {
+        transform: rotate(90deg);
+      }
+
+      .section-content {
+        padding: 0 2rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+      }
+
+      .section.expanded .section-content {
+        padding: 2rem;
+        max-height: 2000px;
+      }
+
+      /* Enhanced Typography */
+      .subsection-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--neon-cyan);
+        margin: 2rem 0 1rem;
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .subsection-title::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--matrix-green);
+        font-weight: bold;
+      }
+
+      .text-content {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Enhanced Lists */
+      .feature-list {
+        display: grid;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .feature-item {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: var(--border-radius-small);
+        border-left: 3px solid var(--matrix-green);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .feature-item::before {
+        content: "//";
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .feature-item:hover {
+        border-left-color: var(--neon-cyan);
+        transform: translateX(8px);
+        background: var(--bg-tertiary);
+        box-shadow: var(--glow-cyan);
+      }
+
+      /* Scope Cards - Hacker Style */
+      .scope-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .scope-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        border: 1px solid var(--text-muted);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .scope-card.in-scope {
+        border-color: var(--matrix-green);
+      }
+
+      .scope-card.roadmap {
+        border-color: var(--laser-orange);
+      }
+
+      .scope-card.out-of-scope {
+        border-color: #ff0040;
+      }
+
+      .scope-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hack);
+      }
+
+      .scope-card.in-scope:hover {
+        box-shadow: var(--glow-green);
+      }
+
+      .scope-card.roadmap:hover {
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+      }
+
+      .scope-card.out-of-scope:hover {
+        box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+      }
+
+      .scope-header {
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+      }
+
+      .scope-title {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Enhanced Tables */
+      .table-container {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        border: 1px solid var(--text-muted);
+        margin: 2rem 0;
+        backdrop-filter: blur(20px);
+      }
+
+      .enhanced-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9rem;
+      }
+
+      .enhanced-table th {
+        background: var(--bg-secondary);
+        padding: 1.5rem 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--matrix-green);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid var(--matrix-green);
+      }
+
+      .enhanced-table td {
+        padding: 1.25rem 1rem;
+        border-bottom: 1px solid var(--text-muted);
+        transition: var(--transition);
+        color: var(--text-secondary);
+      }
+
+      .enhanced-table tr:hover td {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+      }
+
+      /* Priority Tags - Cyber Style */
+      .priority-tag {
+        padding: 0.375rem 0.75rem;
+        border-radius: 20px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: inline-block;
+        border: 1px solid;
+      }
+
+      .priority-high {
+        background: rgba(255, 0, 64, 0.2);
+        color: #ff0040;
+        border-color: #ff0040;
+        box-shadow: 0 0 10px rgba(255, 0, 64, 0.3);
+      }
+
+      .priority-medium {
+        background: rgba(255, 102, 0, 0.2);
+        color: var(--laser-orange);
+        border-color: var(--laser-orange);
+        box-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+      }
+
+      .priority-low {
+        background: rgba(0, 255, 65, 0.2);
+        color: var(--matrix-green);
+        border-color: var(--matrix-green);
+        box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+      }
+
+      /* Enhanced Callouts */
+      .callout {
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        margin: 2rem 0;
+        backdrop-filter: blur(20px);
+        border: 1px solid;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .callout::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+
+      .callout.info {
+        background: rgba(0, 255, 255, 0.1);
+        border-color: var(--neon-cyan);
+      }
+
+      .callout.info::before {
+        background: var(--neon-cyan);
+      }
+
+      .callout.success {
+        background: rgba(0, 255, 65, 0.1);
+        border-color: var(--matrix-green);
+      }
+
+      .callout.success::before {
+        background: var(--matrix-green);
+      }
+
+      .callout.warning {
+        background: rgba(255, 102, 0, 0.1);
+        border-color: var(--laser-orange);
+      }
+
+      .callout.warning::before {
+        background: var(--laser-orange);
+      }
+
+      .callout.danger {
+        background: rgba(255, 0, 64, 0.1);
+        border-color: #ff0040;
+      }
+
+      .callout.danger::before {
+        background: #ff0040;
+      }
+
+      .callout-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .callout-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        margin-top: 0.25rem;
+      }
+
+      .callout-text {
+        flex: 1;
+        font-weight: 500;
+        line-height: 1.6;
+      }
+
+      /* Code styling */
+      .code-tag {
+        background: var(--bg-tertiary);
+        color: var(--matrix-green);
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--border-radius-small);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1px solid var(--matrix-green);
+      }
+
+      /* Screenshots */
+      .screenshot-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .screenshot-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        border: 1px solid var(--text-muted);
+        transition: var(--transition);
+        backdrop-filter: blur(20px);
+      }
+
+      .screenshot-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--neon-cyan);
+        box-shadow: var(--glow-cyan);
+      }
+
+      .screenshot-header {
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--text-muted);
+      }
+
+      .screenshot-title {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .screenshot-description {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: var(--matrix-green);
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 1001;
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid var(--matrix-green);
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .modal-close:hover {
+        background: var(--matrix-green);
+        color: var(--bg-primary);
+        box-shadow: var(--glow-green);
+      }
+
+      /* Expand/Collapse All Buttons */
+      .control-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .control-btn {
+        background: var(--bg-glass);
+        border: 1px solid var(--matrix-green);
+        padding: 10px 15px;
+        border-radius: var(--border-radius-small);
+        color: var(--matrix-green);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+      }
+
+      .control-btn:hover {
+        background: var(--matrix-green);
+        color: var(--bg-primary);
+        box-shadow: var(--glow-green);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .hero {
+          padding: 2rem 1rem 3rem;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .student-info {
+          grid-template-columns: 1fr;
+        }
+
+        .scope-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .screenshot-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-container {
+          position: relative;
+          top: auto;
+          right: auto;
+          margin-bottom: 1rem;
+          justify-content: center;
+        }
+
+        .control-panel {
+          position: relative;
+          bottom: auto;
+          right: auto;
+          flex-direction: row;
+          justify-content: center;
+          margin-top: 2rem;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        opacity: 0.6;
+        pointer-events: none;
+        position: relative;
+      }
+
+      .loading::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2rem;
+        height: 2rem;
+        border: 2px solid var(--matrix-green);
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: translate(-50%, -50%);
+      }
+
+      @keyframes spin {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      *:focus {
+        outline: 2px solid var(--matrix-green);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="matrix-bg"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+      <button class="nav-btn" onclick="scrollToSection('overview')">
+        overview
+      </button>
+      <button class="nav-btn" onclick="scrollToSection('scope')">scope</button>
+      <button class="nav-btn" onclick="scrollToSection('deliverables')">
+        deliverables
+      </button>
+      <button class="nav-btn" onclick="scrollToSection('budget')">
+        budget
+      </button>
+    </div>
+
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="hero">
+        <h1 class="hero-title">homelab.exe</h1>
+        <p class="hero-subtitle">cybersecurity & it systems practice</p>
+
+        <!-- Student Info -->
+        <div class="student-info">
+          <div class="info-card">
+            <div class="info-icon">👩‍💻</div>
+            <div class="info-label">user</div>
+            <div class="info-value">Wendy Buonavita</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📚</div>
+            <div class="info-label">module</div>
+            <div class="info-value">Managing IT Projects</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📅</div>
+            <div class="info-label">term</div>
+            <div class="info-value">Fall 2025</div>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">5</span>
+            <span class="stat-label">deliverables</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">$1K</span>
+            <span class="stat-label">budget</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">9</span>
+            <span class="stat-label">tasks</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">10</span>
+            <span class="stat-label">stakeholders</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Overview -->
+      <div class="section" id="overview">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🔌</span>
+            project overview
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <h3 class="subsection-title">
+            homelab for cybersecurity & it systems practice
+          </h3>
+          <p class="text-content">
+            This project focuses on designing and building a personal Homelab
+            environment to gain hands-on experience with IT systems, networking,
+            and cybersecurity. The Homelab integrates smart home devices,
+            segmented networks, monitoring tools, and vulnerability labs to
+            simulate real-world scenarios in a safe, self-contained setup.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>🎯 academic excellence:</strong> strengthen technical
+              skills through practical application of classroom concepts
+            </div>
+            <div class="feature-item">
+              <strong>💼 portfolio development:</strong> build a portfolio-ready
+              showcase of IT and cybersecurity capabilities
+            </div>
+            <div class="feature-item">
+              <strong>🔬 experimentation platform:</strong> provide a flexible,
+              scalable testbed for experimenting with new tools and
+              configurations
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision & Strategy -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🌐</span>
+            vision & strategic alignment
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>🎯 mission (present):</strong> grow as an IT and
+              cybersecurity professional by building hands-on experience,
+              applying continuous learning, problem-solving, and documentation.
+            </div>
+            <div class="feature-item">
+              <strong>🔮 vision (future):</strong> work in cybersecurity or IT
+              systems administration, using technical expertise to protect
+              organizations and improve system reliability — with a
+              portfolio-ready showcase of skills.
+            </div>
+            <div class="feature-item">
+              <strong>⚡ strategic alignment:</strong>
+              <ul style="margin-top: 0.5rem; margin-left: 1rem">
+                <li>
+                  <strong>academic:</strong> applies project management and IT
+                  knowledge from coursework
+                </li>
+                <li>
+                  <strong>career:</strong> produces portfolio-ready evidence of
+                  technical skills
+                </li>
+                <li>
+                  <strong>personal:</strong> builds a scalable home environment
+                  for ongoing experimentation
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Case -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">💼</span>
+            business case & justification
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <p class="text-content">
+            This homelab directly advances both
+            <strong>academic and career goals</strong>:
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>🎓 academic value:</strong> provides a practical project
+              to apply IT project management concepts, including scope,
+              stakeholders, dependencies, and deliverables
+            </div>
+            <div class="feature-item">
+              <strong>💼 career value:</strong> creates a professional portfolio
+              artifact demonstrating cybersecurity, networking, and system
+              administration skills
+            </div>
+            <div class="feature-item">
+              <strong>👤 personal value:</strong> improves technical competence
+              with real-world tools and environments in a low-risk, self-paced
+              setup
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Scope -->
+      <div class="section" id="scope">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📋</span>
+            project scope
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="scope-grid">
+            <div class="scope-card in-scope">
+              <div class="scope-header">
+                <div class="scope-title">
+                  <span>✅</span>
+                  <strong>in scope for semester</strong>
+                </div>
+              </div>
+              <div class="scope-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    integrate at least one HomeKit smart device
+                    (light/thermostat)
+                  </div>
+                  <div class="feature-item">
+                    configure a segmented test network with VLANs and at least 2
+                    VMs (firewall + client)
+                  </div>
+                  <div class="feature-item">
+                    deploy a self-hosted Minecraft server with user access and
+                    backups
+                  </div>
+                  <div class="feature-item">
+                    implement monitoring with Grafana, Prometheus, or Uptime
+                    Kuma
+                  </div>
+                  <div class="feature-item">
+                    deploy a Vulnerability Lab (DVWA / Metasploit) and run a
+                    basic attack/defense exercise
+                  </div>
+                  <div class="feature-item">
+                    document configurations, testing results, and lessons
+                    learned
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="scope-card roadmap">
+              <div class="scope-header">
+                <div class="scope-title">
+                  <span>🔘</span>
+                  <strong>roadmap items (≤6 months)</strong>
+                </div>
+              </div>
+              <div class="scope-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    add more smart home devices and expand automation
+                  </div>
+                  <div class="feature-item">
+                    implement a SIEM tool for monitoring and logging
+                  </div>
+                  <div class="feature-item">
+                    test additional intrusion detection/prevention tools
+                    (IDS/IPS)
+                  </div>
+                  <div class="feature-item">
+                    experiment with cloud-hosted extensions (AWS, Azure)
+                  </div>
+                  <div class="feature-item">
+                    create a portfolio write-up showcasing Homelab
+                    configurations
+                  </div>
+                  <div class="feature-item">
+                    simulate more advanced attack/defense scenarios for deeper
+                    cybersecurity practice
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="scope-card out-of-scope">
+              <div class="scope-header">
+                <div class="scope-title">
+                  <span>❌</span>
+                  <strong>out of scope</strong>
+                </div>
+              </div>
+              <div class="scope-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    full enterprise-level smart home or corporate network setup
+                  </div>
+                  <div class="feature-item">
+                    24/7 uptime or production-grade availability
+                  </div>
+                  <div class="feature-item">
+                    advanced penetration testing on external networks
+                  </div>
+                  <div class="feature-item">
+                    integration with unsupported or legacy devices
+                  </div>
+                  <div class="feature-item">
+                    professional red-team/blue-team exercises requiring multiple
+                    participants
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stakeholder Register -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">👥</span>
+            stakeholder register
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="table-container">
+            <table class="enhanced-table">
+              <thead>
+                <tr>
+                  <th>stakeholder</th>
+                  <th>category</th>
+                  <th>power</th>
+                  <th>interest</th>
+                  <th>engagement strategy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>wendy (project owner)</strong></td>
+                  <td>internal</td>
+                  <td><span class="priority-tag priority-high">high</span></td>
+                  <td><span class="priority-tag priority-high">high</span></td>
+                  <td>
+                    owns all tasks, manages daily progress, documents work
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>instructor (professor)</strong></td>
+                  <td>internal</td>
+                  <td><span class="priority-tag priority-high">high</span></td>
+                  <td>
+                    <span class="priority-tag priority-medium">medium</span>
+                  </td>
+                  <td>
+                    receives updates via assignments, ensures academic alignment
+                  </td>
+                </tr>
+                <tr>
+                  <td>classmates/peers</td>
+                  <td>internal</td>
+                  <td><span class="priority-tag priority-low">low</span></td>
+                  <td><span class="priority-tag priority-high">high</span></td>
+                  <td>provide feedback and collaboration</td>
+                </tr>
+                <tr>
+                  <td>family members</td>
+                  <td>external</td>
+                  <td>
+                    <span class="priority-tag priority-medium">medium</span>
+                  </td>
+                  <td><span class="priority-tag priority-low">low</span></td>
+                  <td>
+                    informed of network/device impacts, minimize disruption
+                  </td>
+                </tr>
+                <tr>
+                  <td>university IT department</td>
+                  <td>internal</td>
+                  <td>
+                    <span class="priority-tag priority-medium">medium</span>
+                  </td>
+                  <td>
+                    <span class="priority-tag priority-medium">medium</span>
+                  </td>
+                  <td>engage if resources/permissions are needed</td>
+                </tr>
+                <tr>
+                  <td>future employers/recruiters</td>
+                  <td>external</td>
+                  <td><span class="priority-tag priority-high">high</span></td>
+                  <td>
+                    <span class="priority-tag priority-medium">medium</span>
+                  </td>
+                  <td>showcase project in portfolio, LinkedIn, resume</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Power-Interest Grid -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📲</span>
+            power–interest grid
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div
+            style="
+              background: var(--bg-card);
+              padding: 1rem;
+              border-radius: var(--border-radius);
+              border: 1px solid var(--text-muted);
+              backdrop-filter: blur(20px);
+              text-align: center;
+            "
+          >
+            <h4
+              style="
+                margin-bottom: 1rem;
+                color: var(--neon-cyan);
+                font-weight: 600;
+                font-family: 'JetBrains Mono', monospace;
+              "
+            >
+              📊 stakeholder power-interest analysis
+            </h4>
+            <img
+              src="img/PIgrid.png"
+              alt="Power-Interest Grid showing stakeholder positioning based on their power and interest levels"
+              style="
+                max-width: 600px;
+                width: 100%;
+                height: auto;
+                border-radius: var(--border-radius-small);
+                cursor: pointer;
+                border: 1px solid var(--text-muted);
+              "
+              onclick="openModal('img/PIgrid.png')"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Deliverables -->
+      <div class="section" id="deliverables">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📦</span>
+            project deliverables
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="table-container">
+            <table class="enhanced-table">
+              <thead>
+                <tr>
+                  <th>deliverable</th>
+                  <th>type</th>
+                  <th>smart goal</th>
+                  <th>definition of done</th>
+                  <th>target date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>apple homekit smart home integration</strong></td>
+                  <td>tangible</td>
+                  <td>
+                    integrate at least one smart device into apple homekit by
+                    oct 15, 2025
+                  </td>
+                  <td>
+                    device connected, remotely controllable, verified isolation
+                    from main network, screenshots documented
+                  </td>
+                  <td>oct 15, 2025</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong
+                      >cybersecurity practice – segmented test
+                      environment</strong
+                    >
+                  </td>
+                  <td>tangible</td>
+                  <td>
+                    configure a segmented network with at least 2 VMs (firewall
+                    + client) by oct 22, 2025
+                  </td>
+                  <td>
+                    vms deployed, vlan segmentation tested, firewall rules
+                    documented, traffic flows validated
+                  </td>
+                  <td>oct 22, 2025</td>
+                </tr>
+                <tr>
+                  <td><strong>self-hosted minecraft server</strong></td>
+                  <td>tangible</td>
+                  <td>
+                    deploy a functioning minecraft server with user access and
+                    backup plan by nov 1, 2025
+                  </td>
+                  <td>
+                    server online, at least 1 external connection tested,
+                    configuration and troubleshooting documented
+                  </td>
+                  <td>nov 1, 2025</td>
+                </tr>
+                <tr>
+                  <td><strong>monitoring & dashboard</strong></td>
+                  <td>intangible</td>
+                  <td>implement monitoring and dashboards by nov 10, 2025</td>
+                  <td>
+                    metrics collected, dashboards viewable, alerts configured,
+                    screenshots included
+                  </td>
+                  <td>nov 10, 2025</td>
+                </tr>
+                <tr>
+                  <td><strong>vulnerability lab</strong></td>
+                  <td>intangible</td>
+                  <td>
+                    deploy at least one vulnerable application and run an
+                    attack/defense exercise by nov 25, 2025
+                  </td>
+                  <td>
+                    lab operational, vulnerabilities exploited/defended, lessons
+                    learned documented
+                  </td>
+                  <td>nov 25, 2025</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks & Dependencies -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📋</span>
+            tasks & dependencies
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="table-container">
+            <table class="enhanced-table">
+              <thead>
+                <tr>
+                  <th>task id</th>
+                  <th>task</th>
+                  <th>duration</th>
+                  <th>dependencies</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="code-tag">T1</span></td>
+                  <td>research hardware/software needs</td>
+                  <td>2 days</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T2</span></td>
+                  <td>acquire/setup mac mini + networking gear</td>
+                  <td>2 days</td>
+                  <td>T1</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T3</span></td>
+                  <td>configure segmented network (vlans/vms)</td>
+                  <td>4 days</td>
+                  <td>T2</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T4</span></td>
+                  <td>install/configure homekit device</td>
+                  <td>2 days</td>
+                  <td>T2</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T5</span></td>
+                  <td>deploy minecraft server</td>
+                  <td>3 days</td>
+                  <td>T3</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T6</span></td>
+                  <td>install/configure monitoring tools</td>
+                  <td>4 days</td>
+                  <td>T3</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T7</span></td>
+                  <td>deploy vulnerability lab (dvwa, metasploit)</td>
+                  <td>5 days</td>
+                  <td>T3</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T8</span></td>
+                  <td>run cybersecurity practice/attack-defense scenarios</td>
+                  <td>4 days</td>
+                  <td>T7</td>
+                </tr>
+                <tr>
+                  <td><span class="code-tag">T9</span></td>
+                  <td>documentation & report</td>
+                  <td>5 days</td>
+                  <td>T4–T8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout danger">
+            <div class="callout-content">
+              <div class="callout-icon">⚡</div>
+              <div class="callout-text">
+                <strong>critical path:</strong> T1 → T2 → T3 → T7 → T8 → T9
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Budget -->
+      <div class="section" id="budget">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">💰</span>
+            budget estimation
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="table-container">
+            <table class="enhanced-table">
+              <thead>
+                <tr>
+                  <th>item</th>
+                  <th>estimated cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>mac mini (m2 base model)</td>
+                  <td>$600–700</td>
+                </tr>
+                <tr>
+                  <td>networking gear (router, switch, cabling)</td>
+                  <td>$200</td>
+                </tr>
+                <tr>
+                  <td>smart device (homekit light/thermostat)</td>
+                  <td>$50–100</td>
+                </tr>
+                <tr>
+                  <td>external hdd / backup storage</td>
+                  <td>$80</td>
+                </tr>
+                <tr>
+                  <td>misc. software/subscriptions (domains, cloud credits)</td>
+                  <td>$100</td>
+                </tr>
+                <tr
+                  style="
+                    border-top: 3px solid var(--matrix-green);
+                    background: rgba(0, 255, 65, 0.1);
+                  "
+                >
+                  <td><strong>total estimated cost</strong></td>
+                  <td><strong>$1,000 ± 10%</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Items Needed -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🆕</span>
+            new items needed
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>mac mini</strong> - primary homelab machine,
+              stakeholder-driven requirement
+            </div>
+            <div class="feature-item">
+              <strong>networking gear</strong> - switch/router with vlan support
+            </div>
+            <div class="feature-item">
+              <strong>at least 1 homekit-compatible device</strong> - smart
+              light/thermostat
+            </div>
+            <div class="feature-item">
+              <strong>external storage</strong> - for backups and vm snapshots
+            </div>
+            <div class="feature-item">
+              <strong>optional cloud credits</strong> - aws/azure/gcp, learning
+              use only
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Methodology Diagrams -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🗂</span>
+            project methodology diagrams
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div style="display: grid; gap: 2rem">
+            <div
+              style="
+                background: var(--bg-card);
+                padding: 1rem;
+                border-radius: var(--border-radius);
+                border: 1px solid var(--text-muted);
+                backdrop-filter: blur(20px);
+              "
+            >
+              <h4
+                style="
+                  margin-bottom: 1rem;
+                  color: var(--neon-cyan);
+                  font-weight: 600;
+                  font-family: 'JetBrains Mono', monospace;
+                "
+              >
+                📈 project timeline
+              </h4>
+              <img
+                src="img/homelab_timeline_final.png"
+                alt="Project timeline showing key milestones and phases"
+                style="
+                  width: 100%;
+                  border-radius: var(--border-radius-small);
+                  cursor: pointer;
+                  border: 1px solid var(--text-muted);
+                "
+                onclick="openModal('img/homelab_timeline_final.png')"
+              />
+            </div>
+
+            <div
+              style="
+                background: var(--bg-card);
+                padding: 1rem;
+                border-radius: var(--border-radius);
+                border: 1px solid var(--text-muted);
+                backdrop-filter: blur(20px);
+              "
+            >
+              <h4
+                style="
+                  margin-bottom: 1rem;
+                  color: var(--neon-cyan);
+                  font-weight: 600;
+                  font-family: 'JetBrains Mono', monospace;
+                "
+              >
+                🔄 process flowchart
+              </h4>
+              <img
+                src="img/homelab_flowchart_final.png"
+                alt="Process flowchart showing task dependencies and workflow"
+                style="
+                  width: 100%;
+                  border-radius: var(--border-radius-small);
+                  cursor: pointer;
+                  border: 1px solid var(--text-muted);
+                "
+                onclick="openModal('img/homelab_flowchart_final.png')"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Methodology Explanation -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📊</span>
+            project methodology
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="callout info">
+            <div class="callout-content">
+              <div class="callout-icon">⚙️</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 1rem;
+                    font-family: 'JetBrains Mono', monospace;
+                  "
+                >
+                  <strong>chosen methodology: hybrid – iterative</strong>
+                </h4>
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <strong>why hybrid?</strong> some deliverables are clearly
+                    defined, others (like attack/defense practice) may evolve
+                  </div>
+                  <div class="feature-item">
+                    <strong>why iterative?</strong> each deliverable can be
+                    built in a short cycle: plan → build → test → document →
+                    review
+                  </div>
+                  <div class="feature-item">
+                    <strong>cadence:</strong> multiple releases over the
+                    semester (each deliverable completed, tested, and
+                    documented)
+                  </div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600">
+                  <strong>justification:</strong> predictive is too rigid, agile
+                  too unstructured; hybrid–iterative balances structure with
+                  flexibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool Selection -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🛠</span>
+            project tool selection
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="callout success">
+            <div class="callout-content">
+              <div class="callout-icon">🔧</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 1rem;
+                    font-family: 'JetBrains Mono', monospace;
+                  "
+                >
+                  <strong>primary tool: notion</strong>
+                </h4>
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <strong>all-in-one workspace:</strong> combines task
+                    management, notes, documentation, and timelines in one
+                    platform
+                  </div>
+                  <div class="feature-item">
+                    <strong>kanban & database flexibility:</strong> can create
+                    task boards (backlog → in progress → testing → done) and
+                    link tasks with deadlines
+                  </div>
+                  <div class="feature-item">
+                    <strong>documentation-friendly:</strong> embed screenshots,
+                    configs, and notes directly with tasks
+                  </div>
+                  <div class="feature-item">
+                    <strong>portfolio value:</strong> screenshots of notion
+                    boards/pages look professional for class and linkedin
+                    portfolio use
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">📸 notion screenshots</h3>
+          <div class="screenshot-gallery">
+            <div class="screenshot-card">
+              <div class="screenshot-header">
+                <div class="screenshot-title">
+                  <span>📋</span>
+                  board view
+                </div>
+                <div class="screenshot-description">
+                  kanban-style task management
+                </div>
+              </div>
+              <div
+                class="screenshot-image"
+                onclick="openModal('img/board_view.jpg')"
+                style="
+                  height: 80px;
+                  overflow: hidden;
+                  cursor: pointer;
+                  position: relative;
+                  background: var(--bg-secondary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--text-muted);
+                  font-family: 'JetBrains Mono', monospace;
+                "
+              >
+                [click to view]
+              </div>
+            </div>
+
+            <div class="screenshot-card">
+              <div class="screenshot-header">
+                <div class="screenshot-title">
+                  <span>📅</span>
+                  calendar view
+                </div>
+                <div class="screenshot-description">
+                  timeline & deadline tracking
+                </div>
+              </div>
+              <div
+                class="screenshot-image"
+                onclick="openModal('img/calendar_view.jpg')"
+                style="
+                  height: 80px;
+                  overflow: hidden;
+                  cursor: pointer;
+                  position: relative;
+                  background: var(--bg-secondary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--text-muted);
+                  font-family: 'JetBrains Mono', monospace;
+                "
+              >
+                [click to view]
+              </div>
+            </div>
+
+            <div class="screenshot-card">
+              <div class="screenshot-header">
+                <div class="screenshot-title">
+                  <span>📊</span>
+                  table view
+                </div>
+                <div class="screenshot-description">database & properties</div>
+              </div>
+              <div
+                class="screenshot-image"
+                onclick="openModal('img/table_view.jpg')"
+                style="
+                  height: 80px;
+                  overflow: hidden;
+                  cursor: pointer;
+                  position: relative;
+                  background: var(--bg-secondary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--text-muted);
+                  font-family: 'JetBrains Mono', monospace;
+                "
+              >
+                [click to view]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <button class="control-btn" onclick="expandAll()">expand all</button>
+      <button class="control-btn" onclick="collapseAll()">collapse all</button>
+      <button class="control-btn" onclick="scrollToTop()">^ top</button>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage" />
+    </div>
+
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particles = document.getElementById("particles");
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 15 + "s";
+          particle.style.animationDuration = Math.random() * 10 + 15 + "s";
+          particles.appendChild(particle);
+        }
+      }
+
+      // Section collapse/expand functionality
+      function toggleSection(header) {
+        const section = header.parentElement;
+        section.classList.toggle("expanded");
+      }
+
+      function expandAll() {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.add("expanded");
+        });
+      }
+
+      function collapseAll() {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.remove("expanded");
+        });
+      }
+
+      // Navigation functions
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          section.classList.add("expanded");
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Modal functionality
+      function openModal(imageSrc) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.classList.add("show");
+        modalImg.src = imageSrc;
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      // Initialize when DOM loads
+      document.addEventListener("DOMContentLoaded", function () {
+        // Create particles
+        createParticles();
+
+        // Add intersection observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = "slideUp 0.6s ease-out forwards";
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll(".section").forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Close modal on escape key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeModal();
+        });
+
+        // Auto-expand first section
+        const firstSection = document.querySelector(".section");
+        if (firstSection) {
+          firstSection.classList.add("expanded");
+        }
+      });
+
+      // Add slideUp animation
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Add glitch effect to title periodically
+      setInterval(() => {
+        const title = document.querySelector(".hero-title");
+        if (Math.random() < 0.1) {
+          // 10% chance every interval
+          title.style.textShadow = "2px 0 #ff00ff, -2px 0 #00ffff";
+          setTimeout(() => {
+            title.style.textShadow = "var(--glow-green)";
+          }, 100);
+        }
+      }, 3000);
+
+      // Add random particle color changes
+      setInterval(() => {
+        document.querySelectorAll(".particle").forEach((particle) => {
+          if (Math.random() < 0.3) {
+            const colors = [
+              "var(--matrix-green)",
+              "var(--neon-cyan)",
+              "var(--electric-purple)",
+            ];
+            particle.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+          }
+        });
+      }, 5000);
+    </script>
+  </body>
+</html>
