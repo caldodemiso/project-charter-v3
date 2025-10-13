@@ -1006,6 +1006,9 @@
       <button class="nav-btn" onclick="scrollToSection('budget')">
         budget
       </button>
+      <button class="nav-btn" onclick="scrollToSection('status-reports')">
+        status reports
+      </button>
     </div>
 
     <div class="container">
@@ -2043,6 +2046,98 @@
           </div>
         </div>
       </div>
+
+      <!-- Status Reports -->
+      <div class="section" id="status-reports">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📝</span>
+            status reports
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <!-- Basic Information -->
+          <div class="callout info" style="margin-bottom: 2rem">
+            <div class="callout-content">
+              <div class="callout-icon">📊</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 1rem;
+                    font-family: 'JetBrains Mono', monospace;
+                    color: var(--neon-cyan);
+                  "
+                >
+                  <strong>Basic Information</strong>
+                </h4>
+                <p style="margin-bottom: 0.5rem">
+                  <strong>Project Name:</strong> HomeLab Integration Project
+                </p>
+                <p>
+                  <strong>Project Goal:</strong> Build five key homelab
+                  deliverables—HomeKit integration, segmented test environment,
+                  Minecraft server, monitoring dashboard, and NAS setup—to gain
+                  practical networking and cybersecurity skills. All outcomes
+                  will be documented and showcased externally during the
+                  semester.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Reports Table -->
+          <h3 class="subsection-title">Weekly Status Reports</h3>
+          <div class="table-container">
+            <table class="enhanced-table">
+              <thead>
+                <tr>
+                  <th>Report Period</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Example status report row -->
+                <!-- Note: Use the Monday date for the week start -->
+                <tr>
+                  <td>Week of October 6</td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week1')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
+                <!-- Add more status report rows here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Report Cards (Hidden by default) -->
+      <div id="statusReportModal" class="modal" onclick="closeStatusReport()">
+        <span class="modal-close" onclick="closeStatusReport()">&times;</span>
+        <div
+          class="modal-content"
+          style="
+            max-width: 800px;
+            background: var(--bg-card);
+            padding: 2rem;
+            overflow-y: auto;
+          "
+          onclick="event.stopPropagation()"
+        >
+          <div id="statusReportContent"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Control Panel -->
@@ -2116,6 +2211,173 @@
 
       function closeModal() {
         const modal = document.getElementById("imageModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      // Status Report Modal Functions
+      function openStatusReport(reportId) {
+        const modal = document.getElementById("statusReportModal");
+        const content = document.getElementById("statusReportContent");
+
+        // Status report data - add more reports here
+        // Note: Week starts on Monday, report date should be the Monday of that week
+        const reports = {
+          week1: {
+            date: "Week of October 6",
+            health: "On Track", // Options: "On Track", "At Risk", "Off Track"
+            healthColor: "var(--matrix-green)", // green, yellow (#ffff00), red (#ff0040)
+            executiveSummary:
+              "Project initialization is complete with all hardware acquired and initial planning documented. Team is aligned on deliverables and timeline. No blockers identified at this stage.",
+            accomplishments: [
+              "Completed project charter and scope definition",
+              "Acquired Mac Mini and networking equipment",
+              "Set up initial project tracking in Notion",
+            ],
+            nextWeekPlan: [
+              "Configure segmented network with VLANs",
+              "Deploy first two VMs (firewall + client)",
+              "Begin HomeKit device integration",
+            ],
+            upcomingMilestones: [
+              "HomeKit Integration - Due Oct 8, 2025",
+              "Segmented Test Environment - Due Oct 15, 2025",
+              "Minecraft Server Deployment - Due Oct 22, 2025",
+            ],
+            issuesRisks: [
+              {
+                issue: "Potential delay in networking gear delivery",
+                mitigation:
+                  "Ordered from multiple vendors as backup; monitoring shipping status daily",
+              },
+              {
+                issue: "Learning curve with VLAN configuration",
+                mitigation:
+                  "Allocated extra time for research; joined online communities for support",
+              },
+            ],
+            changes: [
+              "No changes from baseline plan",
+              "Budget remains within approved $1,000 estimate",
+            ],
+          },
+          // Add more reports here following the same structure
+        };
+
+        const report = reports[reportId];
+        if (!report) return;
+
+        // Determine health status badge
+        let healthBadge = "";
+        if (report.health === "On Track") {
+          healthBadge = `<span class="priority-tag priority-low" style="font-size: 0.9rem; padding: 0.5rem 1rem;">✅ ${report.health}</span>`;
+        } else if (report.health === "At Risk") {
+          healthBadge = `<span class="priority-tag priority-medium" style="font-size: 0.9rem; padding: 0.5rem 1rem;">⚠️ ${report.health}</span>`;
+        } else if (report.health === "Off Track") {
+          healthBadge = `<span class="priority-tag priority-high" style="font-size: 0.9rem; padding: 0.5rem 1rem;">🚨 ${report.health}</span>`;
+        }
+
+        // Build the card content
+        let html = `
+          <div style="border-left: 3px solid var(--neon-cyan); padding-left: 1.5rem;">
+            <h2 style="color: var(--neon-cyan); font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">
+              ${report.date}
+            </h2>
+
+            <!-- Overall Project Health -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--border-radius-small); border: 1px solid ${
+              report.healthColor
+            };">
+              <h3 style="color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.75rem; font-size: 1.1rem;">
+                📊 Overall Project Health
+              </h3>
+              <div style="margin-bottom: 1rem;">
+                ${healthBadge}
+              </div>
+              <h4 style="color: var(--neon-cyan); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                Executive Summary
+              </h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                ${report.executiveSummary}
+              </p>
+            </div>
+
+            <!-- This Week's Accomplishments -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="color: var(--matrix-green); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                ✅ This Week's Accomplishments
+              </h3>
+              <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.8;">
+                ${report.accomplishments
+                  .map((item) => `<li>${item}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+
+            <!-- Next Week's Plan -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="color: var(--neon-cyan); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                📅 Next Week's Plan
+              </h3>
+              <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.8;">
+                ${report.nextWeekPlan
+                  .map((item) => `<li>${item}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+
+            <!-- Upcoming Milestones -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="color: var(--laser-orange); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                🎯 Upcoming Milestones
+              </h3>
+              <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.8;">
+                ${report.upcomingMilestones
+                  .map((item) => `<li>${item}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+
+            <!-- Issues & Risks / Mitigations -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="color: #ff0040; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                🚧 Issues & Risks / Mitigations
+              </h3>
+              ${
+                report.issuesRisks.length > 0
+                  ? report.issuesRisks
+                      .map(
+                        (item) => `
+                <div style="margin-bottom: 1rem; padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--border-radius-small); border-left: 3px solid #ff0040;">
+                  <p style="color: var(--text-primary); margin-bottom: 0.25rem;"><strong>Issue/Risk:</strong> ${item.issue}</p>
+                  <p style="color: var(--text-secondary);"><strong>Mitigation:</strong> ${item.mitigation}</p>
+                </div>
+              `
+                      )
+                      .join("")
+                  : '<p style="margin-left: 1.5rem; color: var(--text-secondary);">No issues or risks identified</p>'
+              }
+            </div>
+
+            <!-- Changes Since Last Report -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="color: var(--electric-purple); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">
+                🔄 Changes Since Last Report
+              </h3>
+              <ul style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                ${report.changes.map((item) => `<li>${item}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        `;
+
+        content.innerHTML = html;
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeStatusReport() {
+        const modal = document.getElementById("statusReportModal");
         modal.classList.remove("show");
         document.body.style.overflow = "auto";
       }
