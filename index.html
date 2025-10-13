@@ -161,33 +161,140 @@
         }
       }
 
-      /* Navigation */
-      .nav-container {
+      /* Left Sidebar Navigation */
+      .sidebar-nav {
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-glass);
+        backdrop-filter: blur(20px);
+        border-right: 1px solid var(--matrix-green);
+        padding: 2rem 0;
+        overflow-y: auto;
         z-index: 1000;
-        display: flex;
-        gap: 10px;
       }
 
-      .nav-btn {
-        background: var(--bg-glass);
+      .sidebar-header {
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--text-muted);
+        padding-bottom: 1rem;
+      }
+
+      .sidebar-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--matrix-green);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .sidebar-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar-nav-item {
+        margin: 0;
+      }
+
+      .sidebar-nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.875rem 1.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: var(--transition);
+        border-left: 3px solid transparent;
+        cursor: pointer;
+      }
+
+      .sidebar-nav-link:hover {
+        background: rgba(0, 255, 65, 0.1);
+        color: var(--matrix-green);
+        border-left-color: var(--matrix-green);
+      }
+
+      .sidebar-nav-link.active {
+        background: rgba(0, 255, 65, 0.15);
+        color: var(--matrix-green);
+        border-left-color: var(--matrix-green);
+        font-weight: 600;
+      }
+
+      .sidebar-nav-icon {
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+      }
+
+      /* Sidebar Controls */
+      .sidebar-controls {
+        padding: 1.5rem;
+        border-top: 1px solid var(--text-muted);
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .sidebar-control-btn {
+        background: var(--bg-secondary);
         border: 1px solid var(--matrix-green);
-        padding: 8px 12px;
+        padding: 0.75rem 1rem;
         border-radius: var(--border-radius-small);
         color: var(--matrix-green);
         font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
         cursor: pointer;
         transition: var(--transition);
-        backdrop-filter: blur(10px);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
       }
 
-      .nav-btn:hover {
+      .sidebar-control-btn:hover {
         background: var(--matrix-green);
         color: var(--bg-primary);
         box-shadow: var(--glow-green);
+        transform: translateX(4px);
+      }
+
+      .sidebar-control-btn span {
+        font-size: 0.9rem;
+      }
+
+      /* Sidebar scrollbar styling */
+      .sidebar-nav::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .sidebar-nav::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+      }
+
+      .sidebar-nav::-webkit-scrollbar-thumb {
+        background: var(--matrix-green);
+        border-radius: 4px;
+      }
+
+      .sidebar-nav::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-cyan);
+      }
+
+      /* Adjust body to account for sidebar */
+      body.with-sidebar {
+        margin-left: 280px;
       }
 
       .container {
@@ -860,38 +967,31 @@
         box-shadow: var(--glow-green);
       }
 
-      /* Expand/Collapse All Buttons */
-      .control-panel {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 999;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .control-btn {
-        background: var(--bg-glass);
-        border: 1px solid var(--matrix-green);
-        padding: 10px 15px;
-        border-radius: var(--border-radius-small);
-        color: var(--matrix-green);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        cursor: pointer;
-        transition: var(--transition);
-        backdrop-filter: blur(10px);
-      }
-
-      .control-btn:hover {
-        background: var(--matrix-green);
-        color: var(--bg-primary);
-        box-shadow: var(--glow-green);
-      }
-
       /* Responsive Design */
       @media (max-width: 768px) {
+        .sidebar-nav {
+          width: 100%;
+          height: auto;
+          position: relative;
+          border-right: none;
+          border-bottom: 1px solid var(--matrix-green);
+          padding: 1rem 0;
+        }
+
+        body.with-sidebar {
+          margin-left: 0;
+        }
+
+        .sidebar-controls {
+          flex-direction: row;
+          padding: 1rem;
+        }
+
+        .sidebar-control-btn {
+          font-size: 0.65rem;
+          padding: 0.6rem 0.75rem;
+        }
+
         .container {
           padding: 1rem;
         }
@@ -915,23 +1015,6 @@
 
         .screenshot-gallery {
           grid-template-columns: 1fr;
-        }
-
-        .nav-container {
-          position: relative;
-          top: auto;
-          right: auto;
-          margin-bottom: 1rem;
-          justify-content: center;
-        }
-
-        .control-panel {
-          position: relative;
-          bottom: auto;
-          right: auto;
-          flex-direction: row;
-          justify-content: center;
-          margin-top: 2rem;
         }
       }
 
@@ -988,28 +1071,144 @@
       }
     </style>
   </head>
-  <body>
+  <body class="with-sidebar">
     <div class="matrix-bg"></div>
 
     <!-- Floating Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Navigation -->
-    <div class="nav-container">
-      <button class="nav-btn" onclick="scrollToSection('overview')">
-        overview
-      </button>
-      <button class="nav-btn" onclick="scrollToSection('scope')">scope</button>
-      <button class="nav-btn" onclick="scrollToSection('deliverables')">
-        deliverables
-      </button>
-      <button class="nav-btn" onclick="scrollToSection('budget')">
-        budget
-      </button>
-      <button class="nav-btn" onclick="scrollToSection('status-reports')">
-        status reports
-      </button>
-    </div>
+    <!-- Left Sidebar Navigation -->
+    <nav class="sidebar-nav">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Navigation</div>
+      </div>
+      <ul class="sidebar-nav-list">
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('overview')">
+            <span class="sidebar-nav-icon">🔌</span>
+            <span>Project Overview</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('project-goals')"
+          >
+            <span class="sidebar-nav-icon">🎯</span>
+            <span>Project Goals</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('roadmap')">
+            <span class="sidebar-nav-icon">🗺️</span>
+            <span>Roadmap</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('scope')">
+            <span class="sidebar-nav-icon">📋</span>
+            <span>Project Scope</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('stakeholder-register')"
+          >
+            <span class="sidebar-nav-icon">👥</span>
+            <span>Stakeholder Register</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('power-interest-grid')"
+          >
+            <span class="sidebar-nav-icon">📲</span>
+            <span>Power-Interest Grid</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('deliverables')"
+          >
+            <span class="sidebar-nav-icon">📦</span>
+            <span>Project Deliverables</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('tasks-dependencies')"
+          >
+            <span class="sidebar-nav-icon">📋</span>
+            <span>Tasks & Dependencies</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('budget')">
+            <span class="sidebar-nav-icon">💰</span>
+            <span>Budget Estimation</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('new-items')">
+            <span class="sidebar-nav-icon">🆕</span>
+            <span>New Items Needed</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('methodology-diagrams')"
+          >
+            <span class="sidebar-nav-icon">🗂</span>
+            <span>Methodology Diagrams</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('methodology')"
+          >
+            <span class="sidebar-nav-icon">📊</span>
+            <span>Project Methodology</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('tool-selection')"
+          >
+            <span class="sidebar-nav-icon">🛠</span>
+            <span>Tool Selection</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('status-reports')"
+          >
+            <span class="sidebar-nav-icon">📝</span>
+            <span>Status Reports</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Control Buttons -->
+      <div class="sidebar-controls">
+        <button class="sidebar-control-btn" onclick="expandAll()">
+          <span>▼</span> Expand All
+        </button>
+        <button class="sidebar-control-btn" onclick="collapseAll()">
+          <span>▶</span> Collapse All
+        </button>
+        <button class="sidebar-control-btn" onclick="scrollToTop()">
+          <span>↑</span> Back to Top
+        </button>
+      </div>
+    </nav>
 
     <div class="container">
       <!-- Hero Section -->
@@ -1082,7 +1281,7 @@
       </div>
 
       <!-- Project Goals -->
-      <div class="section">
+      <div class="section" id="project-goals">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">🎯</span>
@@ -1126,7 +1325,7 @@
       </div>
 
       <!-- Roadmap -->
-      <div class="section">
+      <div class="section" id="roadmap">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">🗺️</span>
@@ -1287,7 +1486,7 @@
       </div>
 
       <!-- Stakeholder Register -->
-      <div class="section">
+      <div class="section" id="stakeholder-register">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">👥</span>
@@ -1439,7 +1638,7 @@
       </div>
 
       <!-- Power-Interest Grid -->
-      <div class="section">
+      <div class="section" id="power-interest-grid">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">📲</span>
@@ -1604,7 +1803,7 @@
       </div>
 
       <!-- Tasks & Dependencies -->
-      <div class="section">
+      <div class="section" id="tasks-dependencies">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">📋</span>
@@ -1748,7 +1947,7 @@
       </div>
 
       <!-- New Items Needed -->
-      <div class="section">
+      <div class="section" id="new-items">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">🆕</span>
@@ -1781,7 +1980,7 @@
       </div>
 
       <!-- Methodology Diagrams -->
-      <div class="section">
+      <div class="section" id="methodology-diagrams">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">🗂</span>
@@ -1859,7 +2058,7 @@
       </div>
 
       <!-- Methodology Explanation -->
-      <div class="section">
+      <div class="section" id="methodology">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">📊</span>
@@ -1908,7 +2107,7 @@
       </div>
 
       <!-- Tool Selection -->
-      <div class="section">
+      <div class="section" id="tool-selection">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
             <span class="emoji">🛠</span>
@@ -2140,13 +2339,6 @@
       </div>
     </div>
 
-    <!-- Control Panel -->
-    <div class="control-panel">
-      <button class="control-btn" onclick="expandAll()">expand all</button>
-      <button class="control-btn" onclick="collapseAll()">collapse all</button>
-      <button class="control-btn" onclick="scrollToTop()">^ top</button>
-    </div>
-
     <!-- Image Modal -->
     <div id="imageModal" class="modal" onclick="closeModal()">
       <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -2193,6 +2385,28 @@
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
           section.classList.add("expanded");
+        }
+      }
+
+      function navigateToSection(sectionId) {
+        // Remove active class from all nav links
+        document.querySelectorAll(".sidebar-nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Add active class to clicked link
+        event.target.closest(".sidebar-nav-link").classList.add("active");
+
+        // Get the section element
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Expand the section if it's collapsed
+          if (!section.classList.contains("expanded")) {
+            section.classList.add("expanded");
+          }
+
+          // Scroll to the section smoothly
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
 
@@ -2406,6 +2620,36 @@
           observer.observe(section);
         });
 
+        // Intersection observer for active nav highlighting
+        const navObserverOptions = {
+          threshold: 0.3,
+          rootMargin: "-20% 0px -70% 0px",
+        };
+
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.target.id) {
+              // Remove active class from all nav links
+              document.querySelectorAll(".sidebar-nav-link").forEach((link) => {
+                link.classList.remove("active");
+              });
+
+              // Find and activate the corresponding nav link
+              const activeLink = document.querySelector(
+                `.sidebar-nav-link[onclick*="${entry.target.id}"]`
+              );
+              if (activeLink) {
+                activeLink.classList.add("active");
+              }
+            }
+          });
+        }, navObserverOptions);
+
+        // Observe all sections with IDs for nav highlighting
+        document.querySelectorAll(".section[id]").forEach((section) => {
+          navObserver.observe(section);
+        });
+
         // Close modal on escape key
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closeModal();
@@ -2415,6 +2659,12 @@
         const firstSection = document.querySelector(".section");
         if (firstSection) {
           firstSection.classList.add("expanded");
+        }
+
+        // Set first nav item as active by default
+        const firstNavLink = document.querySelector(".sidebar-nav-link");
+        if (firstNavLink) {
+          firstNavLink.classList.add("active");
         }
       });
 
