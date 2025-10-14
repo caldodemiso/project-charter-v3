@@ -2360,12 +2360,57 @@
         const section = document.getElementById(sectionId);
         if (section) {
           // Expand the section if it's collapsed
-          if (!section.classList.contains("expanded")) {
+          const wasCollapsed = !section.classList.contains("expanded");
+          if (wasCollapsed) {
             section.classList.add("expanded");
           }
 
-          // Scroll to the section smoothly
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
+          // Function to perform smooth scroll showing full section
+          const performScroll = () => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const headerOffset = 20; // Small padding from top
+
+            // If section is smaller than viewport, just scroll to top with offset
+            if (sectionHeight <= windowHeight - headerOffset * 2) {
+              window.scrollTo({
+                top: sectionTop - headerOffset,
+                behavior: "smooth",
+              });
+            } else {
+              // Section is larger than viewport, scroll to top
+              // User can scroll down to see the rest
+              window.scrollTo({
+                top: sectionTop - headerOffset,
+                behavior: "smooth",
+              });
+            }
+          };
+
+          // Wait for expansion if needed, otherwise scroll immediately
+          if (wasCollapsed) {
+            // Listen for the expansion animation to complete
+            const sectionContent = section.querySelector(".section-content");
+            if (sectionContent) {
+              sectionContent.addEventListener(
+                "transitionend",
+                function onExpand(e) {
+                  if (e.propertyName === "max-height") {
+                    sectionContent.removeEventListener(
+                      "transitionend",
+                      onExpand
+                    );
+                    performScroll();
+                  }
+                }
+              );
+            } else {
+              setTimeout(performScroll, 500);
+            }
+          } else {
+            performScroll();
+          }
         }
       }
 
