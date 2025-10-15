@@ -1,0 +1,30 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code settings
+.vscode/
+
+# Node stuff (if you ever add npm for dependencies or tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts / cache
+dist/
+build/
+.cache/
+*.log
+
+# Local environment / secrets (if you ever add them)
+.env
+
+# OS or editor cruft
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
