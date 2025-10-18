@@ -281,6 +281,30 @@
         font-size: 0.8rem;
       }
 
+      /* View Report button styling - cyberpunk theme */
+      .nav-btn {
+        background: var(--bg-secondary);
+        border: 1px solid var(--neon-cyan);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius-small);
+        color: var(--neon-cyan);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 4px var(--neon-cyan);
+      }
+
+      .nav-btn:hover {
+        background: var(--neon-cyan);
+        color: var(--bg-primary);
+        box-shadow: var(--glow-cyan);
+        transform: scale(1.05);
+      }
+
       /* Sidebar scrollbar styling */
       .sidebar-nav::-webkit-scrollbar {
         width: 8px;
@@ -1114,6 +1138,15 @@
         <li class="sidebar-nav-item">
           <a
             class="sidebar-nav-link"
+            onclick="navigateToSection('hardware-resources')"
+          >
+            <span class="sidebar-nav-icon">🖥️</span>
+            <span>Hardware / Resources</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
             onclick="navigateToSection('stakeholder-register')"
           >
             <span class="sidebar-nav-icon">👥</span>
@@ -1242,7 +1275,7 @@
             <span class="stat-label">deliverables</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">$1K</span>
+            <span class="stat-number">$580–680</span>
             <span class="stat-label">budget</span>
           </div>
           <div class="stat-card">
@@ -1270,11 +1303,15 @@
             homelab for cybersecurity & it systems practice
           </h3>
           <p class="text-content">
-            This project builds five key homelab deliverables—HomeKit
-            integration, segmented test environment, Minecraft server,
-            monitoring dashboard, and NAS setup—to gain practical networking and
-            cybersecurity skills. All configurations, test results, and lessons
-            learned will be documented throughout the semester.
+            The HomeLab Implementation Project is being developed using a
+            Raspberry Pi 4B as the main hardware platform. The system will
+            leverage Docker containers to deploy networked services, monitoring
+            tools, and testing environments. Smart home integration will be
+            achieved through Homebridge, enabling secure communication between
+            the Raspberry Pi and Apple HomeKit devices. This approach supports
+            lightweight prototyping and energy-efficient learning while
+            maintaining focus on networking, security, and monitoring
+            objectives.
           </p>
         </div>
       </div>
@@ -1293,10 +1330,10 @@
             <div class="feature-item">
               <strong>⚙️ build & configure:</strong> deliver the five updated
               homelab components—HomeKit device integration, segmented test
-              network with VLANs and VMs, self-hosted Minecraft server,
-              monitoring dashboard (Grafana + Prometheus or Uptime Kuma), and
-              Network Attached Storage (NAS) setup using TrueNAS or
-              OpenMediaVault.
+              network with Docker containers and isolated networks, self-hosted
+              Minecraft server, monitoring dashboard (Grafana + Prometheus or
+              Uptime Kuma), and Network Attached Storage (NAS) setup using
+              TrueNAS or OpenMediaVault.
             </div>
             <div class="feature-item">
               <strong>🔒 practice cybersecurity:</strong> use the homelab for
@@ -1325,11 +1362,15 @@
         <div class="section-content">
           <h3 class="subsection-title">🎯 project overview</h3>
           <p class="text-content">
-            This semester-long homelab project builds five key
-            deliverables—HomeKit integration, segmented test environment,
-            Minecraft server, monitoring dashboard, and NAS setup—to gain
-            practical networking and cybersecurity skills, with all outcomes
-            documented during the semester.
+            The scope remains focused on building and managing a small-scale,
+            secure HomeLab environment that integrates smart-home functionality,
+            monitoring, and cybersecurity practice. The change in hardware
+            introduces lightweight, container-based deployment strategies using
+            Docker to simulate multi-system networking and segmented
+            environments. All five deliverables — Apple HomeKit Integration,
+            Cybersecurity Lab, Minecraft Server, Monitoring Dashboard, and
+            Vulnerability Testing — will be implemented in this containerized
+            environment.
           </p>
 
           <div class="scope-grid">
@@ -1351,8 +1392,8 @@
                       >Cybersecurity Practice – Segmented Test
                       Environment</strong
                     >
-                    – configure segmented network with VLANs and at least 2 VMs
-                    (firewall + client)
+                    – configure segmented network with Docker networks and at
+                    least 2 containers (firewall + client)
                   </div>
                   <div class="feature-item">
                     <strong>Self-Hosted Minecraft Server</strong> – deploy
@@ -1428,6 +1469,72 @@
                     Minecraft server
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hardware / Resources -->
+      <div class="section" id="hardware-resources">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🖥️</span>
+            hardware / resources
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Primary Device:</strong> Raspberry Pi 4 Model B (8 GB RAM)
+            </div>
+            <div class="feature-item">
+              <strong>Operating System:</strong> Raspberry Pi OS Lite (64-bit)
+            </div>
+            <div class="feature-item">
+              <strong>Storage:</strong> 128 GB microSD + external SSD for
+              backups
+            </div>
+            <div class="feature-item">
+              <strong>Power and Networking:</strong> USB-C power supply, gigabit
+              Ethernet connection
+            </div>
+            <div class="feature-item">
+              <strong>Smart Home Platform:</strong> Homebridge running on
+              Raspberry Pi OS Lite (64-bit)
+            </div>
+            <div class="feature-item">
+              <strong>Software Stack:</strong> Docker, Docker Compose, Grafana,
+              Prometheus, pfSense (virtualized), and DVWA/Metasploitable
+              containers
+            </div>
+            <div class="feature-item">
+              <strong>Remote Management:</strong> SSH + VS Code Remote Server
+            </div>
+          </div>
+
+          <div class="callout info" style="margin-top: 1.5rem">
+            <div class="callout-content">
+              <div class="callout-icon">💡</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 0.5rem;
+                    font-family: 'JetBrains Mono', monospace;
+                    color: var(--neon-cyan);
+                  "
+                >
+                  <strong>Rationale for Change</strong>
+                </h4>
+                <p>
+                  The shift to Raspberry Pi allows rapid prototyping without the
+                  need for multiple physical servers. It demonstrates
+                  adaptability and practical resource management while
+                  maintaining focus on security, networking, and monitoring
+                  objectives. The modification does not change the project's
+                  deliverables, only the hardware and deployment approach.
+                </p>
               </div>
             </div>
           </div>
@@ -1658,12 +1765,14 @@
                   <td><strong>Apple HomeKit Smart Home Integration</strong></td>
                   <td>Tangible</td>
                   <td>
-                    Configure and control at least one Apple HomeKit device by
-                    Oct 8, 2025.
+                    Configure and control at least one Apple HomeKit device
+                    through Homebridge running in a Docker container on the
+                    Raspberry Pi by Oct 8, 2025.
                   </td>
                   <td>
-                    Device added to HomeKit; controllable remotely; screenshots
-                    + setup guide posted to GitHub.
+                    Device successfully paired with Homebridge; controllable via
+                    Apple Home app; screenshots and configuration steps
+                    documented in GitHub.
                   </td>
                 </tr>
                 <tr>
@@ -1675,12 +1784,12 @@
                   </td>
                   <td>Tangible</td>
                   <td>
-                    Configure a segmented network with VLANs and at least 2 VMs
-                    (firewall + client) by Oct 15, 2025.
+                    Configure a segmented network using Docker networks and at
+                    least 2 containers (firewall + client) by Oct 15, 2025.
                   </td>
                   <td>
-                    VMs deployed; VLAN segmentation tested; firewall rules
-                    documented; traffic flows validated.
+                    Containers deployed; network segmentation tested; firewall
+                    rules documented; traffic isolation validated.
                   </td>
                 </tr>
                 <tr>
@@ -1754,13 +1863,15 @@
                 </tr>
                 <tr>
                   <td><span class="code-tag">T2</span></td>
-                  <td>acquire/setup mac mini + networking gear</td>
+                  <td>acquire/setup raspberry pi 4b + docker environment</td>
                   <td>2 days</td>
                   <td>T1</td>
                 </tr>
                 <tr>
                   <td><span class="code-tag">T3</span></td>
-                  <td>configure segmented network (vlans/vms)</td>
+                  <td>
+                    configure segmented network (docker networks/iptables)
+                  </td>
                   <td>4 days</td>
                   <td>T2</td>
                 </tr>
@@ -1835,8 +1946,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>mac mini (m2 base model)</td>
-                  <td>$600–700</td>
+                  <td>
+                    raspberry pi 4b (8gb) + accessories (case, power, microsd,
+                    ssd)
+                  </td>
+                  <td>$150–200</td>
                 </tr>
                 <tr>
                   <td>networking gear (router, switch, cabling)</td>
@@ -1861,7 +1975,7 @@
                   "
                 >
                   <td><strong>total estimated cost</strong></td>
-                  <td><strong>$1,000 ± 10%</strong></td>
+                  <td><strong>$580–680</strong></td>
                 </tr>
               </tbody>
             </table>
@@ -1881,18 +1995,20 @@
         <div class="section-content">
           <div class="feature-list">
             <div class="feature-item">
-              <strong>mac mini</strong> - primary homelab machine,
-              stakeholder-driven requirement
+              <strong>raspberry pi 4b (8gb)</strong> - primary homelab platform
+              for containerized services and prototyping
+            </div>
+            <div class="feature-item">
+              <strong>microsd card (128gb) + external ssd</strong> - os boot
+              drive and backup storage
             </div>
             <div class="feature-item">
               <strong>networking gear</strong> - switch/router with vlan support
+              (or simulated via docker networks)
             </div>
             <div class="feature-item">
               <strong>at least 1 homekit-compatible device</strong> - smart
               light/thermostat
-            </div>
-            <div class="feature-item">
-              <strong>external storage</strong> - for backups and vm snapshots
             </div>
             <div class="feature-item">
               <strong>optional cloud credits</strong> - aws/azure/gcp, learning
@@ -2607,21 +2723,22 @@
                 </div>
                 <div class="hlm-card r2 c2">
                   <ul>
-                    <li>Research HomeLab components</li>
-                    <li>Plan VLAN segmentation</li>
+                    <li>Setup Raspberry Pi 4B</li>
+                    <li>Install Docker & Docker Compose</li>
+                    <li>Plan container network segmentation</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c3">
                   <ul>
-                    <li>Install pfSense/OPNsense</li>
-                    <li>Configure VLANs & routing</li>
+                    <li>Configure Docker networks</li>
+                    <li>Setup iptables rules for isolation</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c4">
                   <ul>
-                    <li>Deploy HomeKit bridge</li>
-                    <li>Minecraft server</li>
-                    <li>DVWA / Metasploitable VMs</li>
+                    <li>Deploy HomeKit bridge container</li>
+                    <li>Deploy Minecraft server container</li>
+                    <li>Deploy DVWA / Metasploitable containers</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c5">
@@ -2650,13 +2767,13 @@
                 </div>
                 <div class="hlm-card r3 c2">
                   <ul>
-                    <li>Draft Project Charter v3</li>
+                    <li>Draft Project Charter v3 (updated for RPi)</li>
                     <li>Create GitHub repo</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c3">
                   <ul>
-                    <li>Update network/VM docs</li>
+                    <li>Update network/container docs</li>
                     <li>Add screenshots</li>
                   </ul>
                 </div>
@@ -2997,6 +3114,23 @@
                     </button>
                   </td>
                 </tr>
+                <tr>
+                  <td>Week of October 13</td>
+                  <td>
+                    <span class="priority-tag priority-medium"
+                      >In Progress</span
+                    >
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week2')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
                 <!-- Add more status report rows here -->
               </tbody>
             </table>
@@ -3203,6 +3337,52 @@
               "Budget remains within approved $1,000 estimate",
             ],
           },
+          week2: {
+            date: "Week of October 13",
+            health: "In Progress", // Custom status for "In Progress – Shifting Hardware Platform"
+            healthColor: "#ffff00", // yellow
+            executiveSummary:
+              "The HomeLab implementation has been adjusted to use a Raspberry Pi 4B as the primary hardware platform. This change supports early testing and cost efficiency while keeping the project aligned with its learning objectives. Initial setup is underway, including OS installation and SSH access configuration. Network segmentation and monitoring tasks have been rescheduled to follow stable server verification.",
+            accomplishments: [
+              "Selected Raspberry Pi 4B as the HomeLab prototype platform",
+              "Installed Raspberry Pi OS Lite and performed system updates",
+              "Configured SSH access and static IP for local management",
+              "Drafted new network layout adapted for single-device prototype",
+              "Updated project charter to reflect Raspberry Pi implementation and revised budget ($580-680)",
+            ],
+            nextWeekPlan: [
+              "Install and test Docker with containerized services (Grafana, Prometheus, Minecraft)",
+              "Begin documenting setup steps and screenshots for the report",
+              "Research options to simulate VLAN segmentation using Docker networks",
+              "Push documentation and configuration notes to GitHub",
+            ],
+            upcomingMilestones: [
+              "Container Environment Operational – Due Oct 22 2025",
+              "Monitoring Stack Configured – Due Oct 29 2025",
+              "Prototype Security Lab Setup – Due Nov 5 2025",
+            ],
+            issuesRisks: [
+              {
+                issue:
+                  "Limited compute capacity on Raspberry Pi for full multi-VM deployment",
+                mitigation:
+                  "Use lightweight Docker containers and offload heavier services to cloud VMs if required",
+              },
+              {
+                issue:
+                  "VLAN segmentation not natively supported on single-board hardware",
+                mitigation:
+                  "Simulate network isolation through Docker networks and iptables rules",
+              },
+            ],
+            changes: [
+              "Shifted hardware plan from multi-device setup to Raspberry Pi prototype",
+              "Updated project charter with new Hardware/Resources section detailing Raspberry Pi stack",
+              "Revised budget from $1,000 to $580-680 reflecting cost savings from hardware change",
+              "Updated milestones and tasks to focus on containerization and documentation",
+              "Scope and learning outcomes remain unchanged",
+            ],
+          },
           // Add more reports here following the same structure
         };
 
@@ -3217,6 +3397,8 @@
           healthBadge = `<span class="priority-tag priority-medium" style="font-size: 0.9rem; padding: 0.5rem 1rem;">⚠️ ${report.health}</span>`;
         } else if (report.health === "Off Track") {
           healthBadge = `<span class="priority-tag priority-high" style="font-size: 0.9rem; padding: 0.5rem 1rem;">🚨 ${report.health}</span>`;
+        } else if (report.health === "In Progress") {
+          healthBadge = `<span class="priority-tag priority-medium" style="font-size: 0.9rem; padding: 0.5rem 1rem;">🟡 ${report.health} – Shifting Hardware Platform</span>`;
         }
 
         // Build the card content
