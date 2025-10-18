@@ -179,16 +179,16 @@
       }
 
       .sidebar-header {
-        padding: 0 1.5rem;
-        margin-bottom: 0.5rem;
+        padding: 0 1.2rem;
+        margin-bottom: 0.4rem;
         border-bottom: 1px solid var(--text-muted);
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
         flex-shrink: 0;
       }
 
       .sidebar-title {
         font-family: "JetBrains Mono", monospace;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 700;
         color: var(--matrix-green);
         text-transform: uppercase;
@@ -204,22 +204,22 @@
       }
 
       .sidebar-nav-item {
-        margin: 0.25rem 0;
+        margin: 0.1rem 0;
       }
 
       .sidebar-nav-link {
         display: flex;
         align-items: center;
-        padding: 0.6rem 1.5rem;
+        padding: 0.5rem 1.2rem;
         color: var(--text-secondary);
         text-decoration: none;
         font-family: "JetBrains Mono", monospace;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 500;
         transition: var(--transition);
         border-left: 3px solid transparent;
         cursor: pointer;
-        line-height: 1.4;
+        line-height: 1.3;
       }
 
       .sidebar-nav-link:hover {
@@ -236,25 +236,25 @@
       }
 
       .sidebar-nav-icon {
-        margin-right: 0.6rem;
+        margin-right: 0.5rem;
         font-size: 1rem;
       }
 
       /* Sidebar Controls */
       .sidebar-controls {
-        padding: 0.5rem 1.5rem;
+        padding: 0.4rem 1.2rem;
         border-top: 1px solid var(--text-muted);
         margin-top: auto;
         display: flex;
         flex-shrink: 0;
         flex-direction: column;
-        gap: 0.35rem;
+        gap: 0.25rem;
       }
 
       .sidebar-control-btn {
         background: var(--bg-secondary);
         border: 1px solid var(--matrix-green);
-        padding: 0.5rem 0.75rem;
+        padding: 0.45rem 0.65rem;
         border-radius: var(--border-radius-small);
         color: var(--matrix-green);
         font-family: "JetBrains Mono", monospace;
@@ -267,7 +267,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.4rem;
+        gap: 0.3rem;
       }
 
       .sidebar-control-btn:hover {
@@ -998,6 +998,37 @@
         box-shadow: var(--glow-green);
       }
 
+      /* Embed Wrapper Styling */
+      .embed-wrap {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: 0 0 18px rgba(0, 255, 65, 0.15);
+        overflow: hidden;
+        background: var(--bg-900);
+        margin-top: 1rem;
+      }
+
+      .embed-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 60vh;
+        border: none;
+        background-color: var(--bg-900);
+      }
+
+      /* revert to a tall embed for readability */
+      #kanban .embed-wrap iframe {
+        height: 85vh;
+      }
+
+      .caption {
+        font-size: 0.85rem;
+        text-align: center;
+        color: var(--muted);
+        margin-top: 0.75rem;
+        font-style: italic;
+      }
+
       /* Responsive Design */
       @media (max-width: 768px) {
         .sidebar-nav {
@@ -1046,6 +1077,17 @@
 
         .screenshot-gallery {
           grid-template-columns: 1fr;
+        }
+
+        .embed-wrap iframe {
+          height: 70vh;
+        }
+      }
+
+      /* Mobile Responsive for Embed */
+      @media (max-width: 640px) {
+        .embed-wrap iframe {
+          height: 70vh;
         }
       }
 
@@ -1228,6 +1270,21 @@
             <span>Status Reports</span>
           </a>
         </li>
+        <li class="sidebar-nav-item">
+          <a
+            class="sidebar-nav-link"
+            onclick="navigateToSection('project-plan-week9')"
+          >
+            <span class="sidebar-nav-icon">📌</span>
+            <span>Project Plan Update</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="sidebar-nav-link" onclick="navigateToSection('kanban')">
+            <span class="sidebar-nav-icon">🧠</span>
+            <span>Live Project Kanban</span>
+          </a>
+        </li>
       </ul>
 
       <!-- Control Buttons -->
@@ -1275,7 +1332,7 @@
             <span class="stat-label">deliverables</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">$580–680</span>
+            <span class="stat-number">$680</span>
             <span class="stat-label">budget</span>
           </div>
           <div class="stat-card">
@@ -2089,9 +2146,9 @@
                 /* Timeline Grid - 7 columns × 4 rows */
                 .timeline-grid {
                   display: grid;
-                  grid-template-columns: 180px repeat(6, 1fr);
-                  grid-template-rows: auto repeat(3, 1fr);
-                  gap: 14px;
+                  grid-template-columns: 160px repeat(6, 1fr);
+                  grid-template-rows: auto repeat(3, minmax(160px, 1fr));
+                  gap: 10px;
                   align-items: stretch;
                   position: relative;
                   z-index: 1;
@@ -2164,7 +2221,7 @@
                 .timeline-grid .hlm-lane-label {
                   background: rgba(0, 255, 65, 0.15);
                   border: 1px solid var(--matrix-green);
-                  padding: 0.75rem;
+                  padding: 0.5rem 0.75rem;
                   font-family: "JetBrains Mono", monospace;
                   font-size: 0.8rem;
                   color: var(--neon-cyan);
@@ -2183,11 +2240,11 @@
                 .timeline-grid .hlm-card {
                   background: rgba(10, 10, 20, 0.9);
                   border: 1px solid rgba(0, 255, 65, 0.3);
-                  padding: 0.75rem;
+                  padding: 0.85rem 0.9rem;
                   font-family: "JetBrains Mono", monospace;
                   font-size: 0.75rem;
                   color: var(--text-primary);
-                  line-height: 1.4;
+                  line-height: 1.5;
                   display: flex;
                   flex-direction: column;
                   transition: all 0.3s ease;
@@ -3134,6 +3191,89 @@
                 <!-- Add more status report rows here -->
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Plan Update – Week 9 -->
+      <div class="section" id="project-plan-week9">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">📌</span>
+            project plan update – week 9
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="hlm-section">
+            <p
+              style="
+                margin-bottom: 1rem;
+                line-height: 1.8;
+                color: var(--text-secondary);
+              "
+            >
+              Updated the plan to reflect migration to Raspberry Pi 4B hardware.
+            </p>
+            <p
+              style="
+                margin-bottom: 1rem;
+                line-height: 1.8;
+                color: var(--text-secondary);
+              "
+            >
+              Reordered tasks to focus on Docker environment setup and
+              Homebridge integration.
+            </p>
+            <p
+              style="
+                margin-bottom: 1rem;
+                line-height: 1.8;
+                color: var(--text-secondary);
+              "
+            >
+              Adjusted milestone dates for segmentation and monitoring
+              deliverables.
+            </p>
+            <p
+              style="
+                margin-bottom: 2rem;
+                line-height: 1.8;
+                color: var(--text-secondary);
+              "
+            >
+              Highlighted these updates in the attached project plan
+              screenshots.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Project Kanban -->
+      <div class="section" id="kanban">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h2 class="section-title">
+            <span class="emoji">🧠</span>
+            live project kanban
+          </h2>
+          <div class="collapse-indicator">▶</div>
+        </div>
+        <div class="section-content">
+          <div class="hlm-section">
+            <div class="embed-wrap">
+              <iframe
+                src="https://homelabproject.notion.site/ebd/2754c822a0aa802db87be922c266690e"
+                width="100%"
+                height="600"
+                frameborder="0"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+            <p class="caption">
+              Live Kanban board synced directly from Notion — automatically
+              updates as tasks progress.
+            </p>
           </div>
         </div>
       </div>
