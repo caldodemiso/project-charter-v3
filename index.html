@@ -1266,17 +1266,8 @@
             class="sidebar-nav-link"
             onclick="navigateToSection('status-reports')"
           >
-            <span class="sidebar-nav-icon">📝</span>
+            <span class="sidebar-nav-icon">📅</span>
             <span>Status Reports</span>
-          </a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a
-            class="sidebar-nav-link"
-            onclick="navigateToSection('project-plan-week9')"
-          >
-            <span class="sidebar-nav-icon">📌</span>
-            <span>Project Plan Update</span>
           </a>
         </li>
         <li class="sidebar-nav-item">
@@ -1542,12 +1533,37 @@
           <div class="collapse-indicator">▶</div>
         </div>
         <div class="section-content">
+          <div class="callout success" style="margin-bottom: 1.5rem">
+            <div class="callout-content">
+              <div class="callout-icon">✅</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 0.5rem;
+                    font-family: 'JetBrains Mono', monospace;
+                    color: var(--matrix-green);
+                  "
+                >
+                  <strong>Confirmed Hardware Platform</strong>
+                </h4>
+                <p>
+                  Raspberry Pi 4B setup successfully completed and verified as
+                  the project's hardware platform. Initial testing confirms
+                  adequate performance for Docker containerization and networked
+                  services.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div class="feature-list">
             <div class="feature-item">
               <strong>Primary Device:</strong> Raspberry Pi 4 Model B (8 GB RAM)
+              ✅
             </div>
             <div class="feature-item">
-              <strong>Operating System:</strong> Raspberry Pi OS Lite (64-bit)
+              <strong>Operating System:</strong> Raspberry Pi OS Lite (64-bit) —
+              Installed & Configured
             </div>
             <div class="feature-item">
               <strong>Storage:</strong> 128 GB microSD + external SSD for
@@ -1562,9 +1578,9 @@
               Raspberry Pi OS Lite (64-bit)
             </div>
             <div class="feature-item">
-              <strong>Software Stack:</strong> Docker, Docker Compose, Grafana,
-              Prometheus, pfSense (virtualized), and DVWA/Metasploitable
-              containers
+              <strong>Software Stack:</strong> Docker, Docker Compose (currently
+              testing), Grafana, Prometheus, pfSense (virtualized), and
+              DVWA/Metasploitable containers
             </div>
             <div class="feature-item">
               <strong>Remote Management:</strong> SSH + VS Code Remote Server
@@ -2998,6 +3014,11 @@
                     link tasks with deadlines
                   </div>
                   <div class="feature-item">
+                    <strong>live integration:</strong> Notion Kanban board is
+                    now embedded directly on this webpage, providing real-time
+                    visibility into project progress ✅
+                  </div>
+                  <div class="feature-item">
                     <strong>documentation-friendly:</strong> embed screenshots,
                     configs, and notes directly with tasks
                   </div>
@@ -3108,7 +3129,7 @@
       <div class="section" id="status-reports">
         <div class="section-header" onclick="toggleSection(this)">
           <h2 class="section-title">
-            <span class="emoji">📝</span>
+            <span class="emoji">📅</span>
             status reports
           </h2>
           <div class="collapse-indicator">▶</div>
@@ -3188,63 +3209,144 @@
                     </button>
                   </td>
                 </tr>
+                <tr>
+                  <td>Week of October 20</td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week3')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
                 <!-- Add more status report rows here -->
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
 
-      <!-- Project Plan Update – Week 9 -->
-      <div class="section" id="project-plan-week9">
-        <div class="section-header" onclick="toggleSection(this)">
-          <h2 class="section-title">
-            <span class="emoji">📌</span>
-            project plan update – week 9
-          </h2>
-          <div class="collapse-indicator">▶</div>
-        </div>
-        <div class="section-content">
-          <div class="hlm-section">
-            <p
-              style="
-                margin-bottom: 1rem;
-                line-height: 1.8;
-                color: var(--text-secondary);
-              "
-            >
-              Updated the plan to reflect migration to Raspberry Pi 4B hardware.
-            </p>
-            <p
-              style="
-                margin-bottom: 1rem;
-                line-height: 1.8;
-                color: var(--text-secondary);
-              "
-            >
-              Reordered tasks to focus on Docker environment setup and
-              Homebridge integration.
-            </p>
-            <p
-              style="
-                margin-bottom: 1rem;
-                line-height: 1.8;
-                color: var(--text-secondary);
-              "
-            >
-              Adjusted milestone dates for segmentation and monitoring
-              deliverables.
-            </p>
-            <p
-              style="
-                margin-bottom: 2rem;
-                line-height: 1.8;
-                color: var(--text-secondary);
-              "
-            >
-              Highlighted these updates in the attached project plan
-              screenshots.
-            </p>
+          <!-- Project Plan Update – Week 9 (corresponds to Week 2: Oct 13) -->
+          <div style="margin-top: 3rem; margin-bottom: 3rem">
+            <div class="callout info">
+              <div class="callout-content">
+                <div class="callout-icon">📌</div>
+                <div class="callout-text">
+                  <h4
+                    style="
+                      margin-bottom: 1rem;
+                      font-family: 'JetBrains Mono', monospace;
+                      color: var(--neon-cyan);
+                    "
+                  >
+                    <strong>Project Plan Update – Week 9</strong>
+                  </h4>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Updated the plan to reflect migration to Raspberry Pi 4B
+                    hardware.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Reordered tasks to focus on Docker environment setup and
+                    Homebridge integration.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Adjusted milestone dates for segmentation and monitoring
+                    deliverables.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 0;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Highlighted these updates in the attached project plan
+                    screenshots.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Plan Update – Week 10 (corresponds to Week 3: Oct 20) -->
+          <div style="margin-bottom: 2rem">
+            <div class="callout info">
+              <div class="callout-content">
+                <div class="callout-icon">📌</div>
+                <div class="callout-text">
+                  <h4
+                    style="
+                      margin-bottom: 1rem;
+                      font-family: 'JetBrains Mono', monospace;
+                      color: var(--neon-cyan);
+                    "
+                  >
+                    <strong>Project Plan Update – Week 10</strong>
+                  </h4>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Updated project plan to include Docker testing tasks within
+                    the implementation phase.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Added milestones for Homebridge container deployment and
+                    Grafana monitoring setup.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Adjusted sequence of testing tasks to match the Raspberry Pi
+                    environment limitations.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 0;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Highlighted new additions in green within the updated plan
+                    screenshots.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -3259,6 +3361,29 @@
           <div class="collapse-indicator">▶</div>
         </div>
         <div class="section-content">
+          <div class="callout success" style="margin-bottom: 1.5rem">
+            <div class="callout-content">
+              <div class="callout-icon">📊</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 0.5rem;
+                    font-family: 'JetBrains Mono', monospace;
+                    color: var(--matrix-green);
+                  "
+                >
+                  <strong>Live Progress Tracking</strong>
+                </h4>
+                <p>
+                  The Notion Kanban board has been embedded on this webpage to
+                  provide real-time visibility into project progress. Updates
+                  made in Notion automatically reflect here, ensuring
+                  transparency and alignment with actual work completed.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div class="hlm-section">
             <div class="embed-wrap">
               <iframe
@@ -3521,6 +3646,46 @@
               "Revised budget from $1,000 to $580-680 reflecting cost savings from hardware change",
               "Updated milestones and tasks to focus on containerization and documentation",
               "Scope and learning outcomes remain unchanged",
+            ],
+          },
+          week3: {
+            date: "Week of October 20",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "This week focused on stabilizing the Raspberry Pi 4B environment and beginning Docker configuration tests. The Notion Kanban board is now live and fully embedded in the site to reflect real-time progress. Documentation for setup and network configuration has been started.",
+            accomplishments: [
+              "Finalized Raspberry Pi 4B system configuration",
+              "Installed and tested Docker + Docker Compose",
+              "Created GitHub documentation page for network configuration steps",
+              "Embedded Notion Kanban into project site",
+            ],
+            nextWeekPlan: [
+              "Build and deploy Homebridge container",
+              "Test multi-container networking",
+              "Begin monitoring setup (Grafana/Prometheus)",
+              "Capture screenshots and finalize documentation for next progress report",
+            ],
+            upcomingMilestones: [
+              "Monitoring Stack Configured – Due Oct 29 2025",
+              "Prototype Security Lab Setup – Due Nov 5 2025",
+              "Final Documentation & Presentation – Due Nov 12 2025",
+            ],
+            issuesRisks: [
+              {
+                issue: "Docker networking limitations on ARM hardware",
+                mitigation:
+                  "Use lightweight containers and simulated segmentation",
+              },
+              {
+                issue: "Raspberry Pi thermals under load",
+                mitigation: "Enable passive cooling and monitor with Grafana",
+              },
+            ],
+            changes: [
+              "Added live Notion Kanban integration",
+              "Adjusted timeline to include Docker testing before Homebridge deployment",
+              "No budget or scope changes",
             ],
           },
           // Add more reports here following the same structure
