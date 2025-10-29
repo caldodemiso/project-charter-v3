@@ -129,7 +129,6 @@ project-charter-v3/
 
 **Wendy Buonavita**  
 Computer Information Systems Student | California State University, Los Angeles  
-📧 [buonawen@gmail.com](mailto:buonawen@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/buonawen/) | [GitHub](https://github.com/caldodemiso)
 
 ---
