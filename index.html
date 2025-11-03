@@ -2193,7 +2193,7 @@
                 /* Timeline Grid - 7 columns × 4 rows */
                 .timeline-grid {
                   display: grid;
-                  grid-template-columns: 160px repeat(6, 1fr);
+                  grid-template-columns: 160px repeat(7, 1fr);
                   grid-template-rows: auto repeat(3, minmax(160px, 1fr));
                   gap: 10px;
                   align-items: stretch;
@@ -2335,6 +2335,10 @@
                   grid-row: 1;
                   grid-column: 7;
                 }
+                .timeline-grid .r1.c8 {
+                  grid-row: 1;
+                  grid-column: 8;
+                }
 
                 .timeline-grid .r2.c1 {
                   grid-row: 2;
@@ -2363,6 +2367,10 @@
                 .timeline-grid .r2.c7 {
                   grid-row: 2;
                   grid-column: 7;
+                }
+                .timeline-grid .r2.c8 {
+                  grid-row: 2;
+                  grid-column: 8;
                 }
 
                 .timeline-grid .r3.c1 {
@@ -2393,6 +2401,10 @@
                   grid-row: 3;
                   grid-column: 7;
                 }
+                .timeline-grid .r3.c8 {
+                  grid-row: 3;
+                  grid-column: 8;
+                }
 
                 .timeline-grid .r4.c1 {
                   grid-row: 4;
@@ -2422,10 +2434,19 @@
                   grid-row: 4;
                   grid-column: 7;
                 }
+                .timeline-grid .r4.c8 {
+                  grid-row: 4;
+                  grid-column: 8;
+                }
 
                 .timeline-grid .hlm-card:hover {
                   background: rgba(0, 255, 65, 0.1);
                   box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.3);
+                }
+
+                .timeline-grid .hlm-card.showcase-phase {
+                  border: 1px solid var(--matrix-green);
+                  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
                 }
 
                 .timeline-grid .hlm-card ul {
@@ -2543,7 +2564,7 @@
                 @media (max-width: 1024px) {
                   .timeline-grid {
                     grid-template-columns: 150px repeat(3, minmax(0, 1fr));
-                    grid-template-rows: auto repeat(6, 1fr);
+                    grid-template-rows: auto repeat(9, 1fr);
                     gap: 10px;
                   }
 
@@ -2552,10 +2573,11 @@
                     font-size: 0.7rem;
                   }
 
-                  /* Hide weeks 4-6 headers in row 1 */
+                  /* Hide weeks 4-7 headers in row 1 */
                   .timeline-grid .r1.c5,
                   .timeline-grid .r1.c6,
-                  .timeline-grid .r1.c7 {
+                  .timeline-grid .r1.c7,
+                  .timeline-grid .r1.c8 {
                     display: none;
                   }
 
@@ -2645,15 +2667,33 @@
                     grid-column: 4;
                   }
 
-                  /* Row labels span 2 rows each */
+                  /* Reposition row 2 (Technical) c8 */
+                  .timeline-grid .r2.c8 {
+                    grid-row: 4;
+                    grid-column: 2;
+                  }
+
+                  /* Reposition row 3 (Documentation) c8 */
+                  .timeline-grid .r3.c8 {
+                    grid-row: 6;
+                    grid-column: 2;
+                  }
+
+                  /* Reposition row 4 (Testing) c8 */
+                  .timeline-grid .r4.c8 {
+                    grid-row: 8;
+                    grid-column: 2;
+                  }
+
+                  /* Row labels span appropriate rows */
                   .timeline-grid .r2.c1 {
-                    grid-row: 2 / 4;
+                    grid-row: 2 / 5;
                   }
                   .timeline-grid .r3.c1 {
-                    grid-row: 4 / 6;
+                    grid-row: 5 / 7;
                   }
                   .timeline-grid .r4.c1 {
-                    grid-row: 6 / 8;
+                    grid-row: 7 / 9;
                   }
                 }
 
@@ -2672,7 +2712,7 @@
 
                   .timeline-grid {
                     grid-template-columns: 120px repeat(2, minmax(0, 1fr));
-                    grid-template-rows: auto repeat(9, 1fr);
+                    grid-template-rows: auto repeat(12, 1fr);
                     gap: 8px;
                   }
 
@@ -2686,11 +2726,12 @@
                     padding: 0.5rem;
                   }
 
-                  /* Hide weeks 3-6 headers */
+                  /* Hide weeks 3-7 headers */
                   .timeline-grid .r1.c4,
                   .timeline-grid .r1.c5,
                   .timeline-grid .r1.c6,
-                  .timeline-grid .r1.c7 {
+                  .timeline-grid .r1.c7,
+                  .timeline-grid .r1.c8 {
                     display: none;
                   }
 
@@ -2781,6 +2822,31 @@
                     grid-column: 3;
                   }
 
+                  /* Reposition c8 cards for mobile */
+                  .timeline-grid .r2.c8 {
+                    grid-row: 5;
+                    grid-column: 2;
+                  }
+                  .timeline-grid .r3.c8 {
+                    grid-row: 8;
+                    grid-column: 2;
+                  }
+                  .timeline-grid .r4.c8 {
+                    grid-row: 11;
+                    grid-column: 2;
+                  }
+
+                  /* Update row label spans for mobile */
+                  .timeline-grid .r2.c1 {
+                    grid-row: 2 / 6;
+                  }
+                  .timeline-grid .r3.c1 {
+                    grid-row: 6 / 9;
+                  }
+                  .timeline-grid .r4.c1 {
+                    grid-row: 9 / 12;
+                  }
+
                   .hlm-continuous-items {
                     flex-direction: column;
                     gap: 0.75rem;
@@ -2818,6 +2884,10 @@
                 </div>
                 <div class="header hlm-phase r1 c7">
                   <span class="hlm-phase-num">6</span>
+                  <span class="hlm-phase-weeks">Weeks 15-16</span>
+                </div>
+                <div class="header hlm-phase r1 c8">
+                  <span class="hlm-phase-num">7</span>
                   <span class="hlm-phase-weeks">Weeks 15-16</span>
                 </div>
 
@@ -2864,6 +2934,16 @@
                     <li>Demo recording</li>
                   </ul>
                 </div>
+                <div class="hlm-card showcase-phase r2 c8">
+                  <ul>
+                    <li>
+                      Publish Reddit + LinkedIn posts (findings, lessons,
+                      screenshots)
+                    </li>
+                    <li>Finalize GitHub docs & reflection</li>
+                    <li>Submit final packet / presentation</li>
+                  </ul>
+                </div>
 
                 <!-- Row 3: Documentation & Management -->
                 <div class="hlm-lane-label r3 c1">
@@ -2905,6 +2985,16 @@
                     <li>Polish GitHub Pages</li>
                   </ul>
                 </div>
+                <div class="hlm-card showcase-phase r3 c8">
+                  <ul>
+                    <li>
+                      Publish Reddit + LinkedIn posts (findings, lessons,
+                      screenshots)
+                    </li>
+                    <li>Finalize GitHub docs & reflection</li>
+                    <li>Submit final packet / presentation</li>
+                  </ul>
+                </div>
 
                 <!-- Row 4: Testing & Reporting -->
                 <div class="hlm-lane-label r4 c1">Testing<br />& Reporting</div>
@@ -2943,6 +3033,16 @@
                     <li>Final submission</li>
                   </ul>
                 </div>
+                <div class="hlm-card showcase-phase r4 c8">
+                  <ul>
+                    <li>
+                      Publish Reddit + LinkedIn posts (findings, lessons,
+                      screenshots)
+                    </li>
+                    <li>Finalize GitHub docs & reflection</li>
+                    <li>Submit final packet / presentation</li>
+                  </ul>
+                </div>
               </div>
 
               <div class="hlm-continuous">
@@ -2957,6 +3057,23 @@
                   <span class="hlm-continuous-item">Documentation updates</span>
                 </div>
               </div>
+
+              <p
+                style="
+                  margin-top: 1.5rem;
+                  padding: 0.75rem;
+                  font-family: 'JetBrains Mono', monospace;
+                  font-size: 0.85rem;
+                  color: var(--text-secondary);
+                  text-align: center;
+                  border-top: 1px solid rgba(0, 255, 65, 0.2);
+                "
+              >
+                <em
+                  >New final milestone added to reflect public showcase (Reddit
+                  + LinkedIn) and closure tasks.</em
+                >
+              </p>
             </section>
           </div>
         </div>
