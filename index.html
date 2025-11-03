@@ -1362,7 +1362,10 @@
             objectives. This project provides a practical, low-cost framework
             that others can replicate to learn cybersecurity, smart home
             integration, and system monitoring in a safe, self-hosted
-            environment.
+            environment. This project will also be showcased publicly through
+            professional and community platforms such as LinkedIn and Reddit to
+            share findings, lessons learned, and technical outcomes with other
+            students and practitioners.
           </p>
         </div>
       </div>
@@ -1396,6 +1399,11 @@
               <strong>📝 document & reflect:</strong> maintain clear
               documentation of configurations, test results, security findings,
               and lessons learned throughout the project.
+            </div>
+            <div class="feature-item">
+              <strong>📢 communicate project results:</strong> share project
+              outcomes through public channels (LinkedIn and Reddit) to
+              demonstrate professional development and encourage peer learning.
             </div>
           </div>
         </div>
@@ -2991,6 +2999,11 @@
                     semester (each deliverable completed, tested, and
                     documented)
                   </div>
+                  <div class="feature-item">
+                    <strong>showcase deliverable:</strong> prepare and publish a
+                    public post summarizing project insights, technical
+                    outcomes, and lessons learned
+                  </div>
                 </div>
                 <p style="margin-top: 1rem; font-weight: 600">
                   <strong>justification:</strong> predictive is too rigid, agile
@@ -3172,7 +3185,10 @@
                   Beyond course requirements, this project demonstrates how
                   accessible technology can support hands-on cybersecurity
                   learning and practical experimentation for future IT
-                  professionals.
+                  professionals. By sharing the project publicly, the HomeLab
+                  implementation becomes more than a class assignment — it
+                  becomes a replicable, real-world resource for others exploring
+                  cybersecurity, smart-home integration, and project management.
                 </p>
               </div>
             </div>
@@ -3274,6 +3290,21 @@
                       class="nav-btn"
                       style="padding: 6px 12px; font-size: 11px"
                       onclick="openStatusReport('week3')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Week of November 3</td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week4')"
                     >
                       View Report
                     </button>
@@ -3741,6 +3772,43 @@
               "Added live Notion Kanban integration",
               "Adjusted timeline to include Docker testing before Homebridge deployment",
               "No budget or scope changes",
+            ],
+          },
+          week4: {
+            date: "Week of November 3",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "Progress this week focused on refining documentation, expanding project showcase planning, and optimizing container resources on the Raspberry Pi. The system remains stable under multi-container workloads. Initial monitoring tests have begun, and preparations for Grafana dashboard deployment and Minecraft server testing are in progress.",
+            accomplishments: [
+              "Updated project charter to include external showcase focus (Reddit + LinkedIn)",
+              "Tuned Docker performance for Raspberry Pi stability",
+              "Created preliminary Grafana dashboard layouts",
+              "Planned Reddit showcase structure",
+            ],
+            nextWeekPlan: [
+              "Deploy and test Minecraft server container",
+              "Finalize Grafana / Prometheus dashboard setup",
+              "Capture visuals for documentation and Reddit post",
+              "Continue refining NAS configuration",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue: "CPU load spikes from multiple containers",
+                mitigation:
+                  "Adjust Docker resource limits and monitor performance with Grafana",
+              },
+              {
+                issue: "Time management between testing and documentation",
+                mitigation:
+                  "Combine documentation updates with each testing phase to reduce workload",
+              },
+            ],
+            changes: [
+              "Added Grafana milestone to implementation phase",
+              "Reordered NAS setup to follow monitoring stage",
+              "Expanded reflection section to include project showcasing component",
             ],
           },
           // Add more reports here following the same structure
