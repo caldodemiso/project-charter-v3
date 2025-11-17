@@ -3427,6 +3427,36 @@
                     </button>
                   </td>
                 </tr>
+                <tr>
+                  <td>Week 12</td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week12')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Week 13</td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week13')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
                 <!-- Add more status report rows here -->
               </tbody>
             </table>
@@ -3926,6 +3956,75 @@
               "Added Grafana milestone to implementation phase",
               "Reordered NAS setup to follow monitoring stage",
               "Expanded reflection section to include project showcasing component",
+            ],
+          },
+          week12: {
+            date: "Week 12",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "This week I kept working on my Homelab project setup. I continued Docker testing, cleaned up the monitoring setup, and updated parts of the methodology diagram and charter. I also started mapping out my screenshot flow for the final deliverables.",
+            accomplishments: [
+              "Continued Docker container testing",
+              "Cleaned up monitoring setup",
+              "Updated methodology diagram",
+              "Added details to the charter",
+              "Planned the stakeholder interview",
+              "Started the Lessons Learned outline",
+              "Updated GitHub repo structure",
+              "Started organizing screenshot flow",
+            ],
+            nextWeekPlan: [
+              "Wrap up testing, update documentation, prep closure materials, and plan how to share the project publicly.",
+            ],
+            upcomingMilestones: [
+              "Final Docker validation",
+              "Lessons Learned",
+              "Stakeholder interview planning",
+            ],
+            issuesRisks: [
+              {
+                issue: "Slowdowns due to hardware limits and long build times",
+                mitigation: "Continue monitoring and optimize where possible",
+              },
+            ],
+            changes: ["More documentation improvements and early closure prep"],
+          },
+          week13: {
+            date: "Week 13",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "This week I shifted from technical work into preparing final documentation. I updated my project docs, finished another round of Docker testing, and organized my files. I also planned out my public GitHub repo and drafted my Reddit post.",
+            accomplishments: [
+              "Updated project documentation",
+              "Finished Docker testing",
+              "Organized files for final deliverables",
+              "Planned GitHub repo structure",
+              "Drafted Reddit write up",
+              "Finished stakeholder interview questions",
+              "Reviewed tasks for closure week",
+            ],
+            nextWeekPlan: [
+              "Finish Lessons Learned, complete the stakeholder interview, finalize screenshots, and write the closure document.",
+            ],
+            upcomingMilestones: [
+              "Stakeholder interview",
+              "Closure document",
+              "GitHub repo launch",
+              "Final screenshots",
+              "Lessons Learned",
+              "Final presentation",
+            ],
+            issuesRisks: [
+              {
+                issue: "Raspberry Pi hardware slows down testing",
+                mitigation:
+                  "Work within hardware constraints and optimize testing approach",
+              },
+            ],
+            changes: [
+              "Shifted from technical work to documentation and closure tasks",
             ],
           },
           // Add more reports here following the same structure
