@@ -1229,12 +1229,6 @@
           </a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="sidebar-nav-link" onclick="navigateToSection('new-items')">
-            <span class="sidebar-nav-icon">🆕</span>
-            <span>New Items Needed</span>
-          </a>
-        </li>
-        <li class="sidebar-nav-item">
           <a
             class="sidebar-nav-link"
             onclick="navigateToSection('methodology-diagrams')"
@@ -1347,25 +1341,18 @@
           <div class="collapse-indicator">▶</div>
         </div>
         <div class="section-content">
-          <h3 class="subsection-title">
-            homelab for cybersecurity & it systems practice
-          </h3>
+          <h3 class="subsection-title">mission</h3>
           <p class="text-content">
-            The HomeLab Implementation Project is being developed using a
-            Raspberry Pi 4B as the main hardware platform. The system will
-            leverage Docker containers to deploy networked services, monitoring
-            tools, and testing environments. Smart home integration will be
-            achieved through Homebridge, enabling secure communication between
-            the Raspberry Pi and Apple HomeKit devices. This approach supports
-            lightweight prototyping and energy-efficient learning while
-            maintaining focus on networking, security, and monitoring
-            objectives. This project provides a practical, low-cost framework
-            that others can replicate to learn cybersecurity, smart home
-            integration, and system monitoring in a safe, self-hosted
-            environment. This project will also be showcased publicly through
-            professional and community platforms such as LinkedIn and Reddit to
-            share findings, lessons learned, and technical outcomes with other
-            students and practitioners.
+            Grow as an IT and cybersecurity professional by building a
+            functional homelab with real services, segmentation, smart home
+            integration, and proper documentation.
+          </p>
+          <h3 class="subsection-title">vision</h3>
+          <p class="text-content">
+            Use this lab experience to move into cybersecurity or IT systems
+            administration roles, managing secure environments, automating
+            systems, and improving reliability. This page should double as a
+            portfolio piece.
           </p>
         </div>
       </div>
@@ -1384,10 +1371,9 @@
             <div class="feature-item">
               <strong>⚙️ build & configure:</strong> deliver the five updated
               homelab components—HomeKit device integration, segmented test
-              network with Docker containers and isolated networks, self-hosted
-              Minecraft server, monitoring dashboard (Grafana + Prometheus or
-              Uptime Kuma), and Network Attached Storage (NAS) setup using
-              TrueNAS or OpenMediaVault.
+              network via VLANs and firewall rules on the UDM Pro, self-hosted
+              Minecraft server, monitoring dashboard (UniFi Dashboard + Uptime
+              Kuma), and vulnerability lab using the Mac mini and UNAS Pro NAS.
             </div>
             <div class="feature-item">
               <strong>🔒 practice cybersecurity:</strong> use the homelab for
@@ -1421,15 +1407,12 @@
         <div class="section-content">
           <h3 class="subsection-title">🎯 project overview</h3>
           <p class="text-content">
-            The scope remains focused on building and managing a small-scale,
-            secure HomeLab environment that integrates smart-home functionality,
-            monitoring, and cybersecurity practice. The change in hardware
-            introduces lightweight, container-based deployment strategies using
-            Docker to simulate multi-system networking and segmented
-            environments. All five deliverables — Apple HomeKit Integration,
-            Cybersecurity Lab, Minecraft Server, Monitoring Dashboard, and
-            Vulnerability Testing — will be implemented in this containerized
-            environment.
+            This homelab project is built using a Mac mini as the primary
+            compute host and a UNAS Pro as the storage system, integrated into
+            my existing UniFi network (UDM Pro, USW-16-PoE, and UniFi APs). The
+            goal is to build a clean, realistic network + security lab that
+            demonstrates smart home integration, segmentation, monitoring,
+            hosting services, and a safe vulnerability testing environment.
           </p>
 
           <div class="scope-grid">
@@ -1444,30 +1427,37 @@
                 <div class="feature-list">
                   <div class="feature-item">
                     <strong>Apple HomeKit Smart Home Integration</strong> –
-                    configure and control at least one HomeKit-compatible device
+                    integrate smart devices into Apple Home using Apple TV and
+                    HomePod Mini as Home Hubs, Philips Hue Bridge, Ecobee
+                    thermostat, Wiz lights via HomeBridge on the Mac mini, and
+                    the UniFi G4 Doorbell via Scrypted
                   </div>
                   <div class="feature-item">
                     <strong
                       >Cybersecurity Practice – Segmented Test
                       Environment</strong
                     >
-                    – set up a segmented test environment that can serve as a
-                    reference model for other learners or small teams exploring
-                    cybersecurity and network isolation using Docker networks
-                    and at least 2 containers (firewall + client)
+                    – use the UDM Pro to create VLANs for Main, IoT, and Lab
+                    networks, with firewall rules that isolate traffic and
+                    protect the main network while still allowing a controlled
+                    lab environment
                   </div>
                   <div class="feature-item">
-                    <strong>Self-Hosted Minecraft Server</strong> – deploy
-                    functioning Minecraft server with user access and backup
-                    plan
+                    <strong>Self-Hosted Minecraft Server</strong> – host a
+                    Minecraft server on the Mac mini (Docker or native),
+                    managing users, backups, and connectivity
                   </div>
                   <div class="feature-item">
-                    <strong>Monitoring & Dashboard</strong> – implement
-                    monitoring using Grafana + Prometheus or Uptime Kuma
+                    <strong>Monitoring & Dashboard</strong> – use UniFi's
+                    built-in dashboard for real-time monitoring and run Uptime
+                    Kuma on the Mac mini to track uptime for key services
                   </div>
                   <div class="feature-item">
-                    <strong>Network Attached Storage (NAS) Setup</strong> –
-                    configure storage solution using TrueNAS or OpenMediaVault
+                    <strong
+                      >Vulnerability Lab (DVWA / Metasploit / Kali)</strong
+                    >
+                    – run DVWA, Kali, and Metasploit on the Mac mini using VMs
+                    or containers, isolated inside the Lab VLAN on the UDM Pro
                   </div>
                 </div>
               </div>
@@ -1546,82 +1536,50 @@
           <div class="collapse-indicator">▶</div>
         </div>
         <div class="section-content">
-          <div class="callout success" style="margin-bottom: 1.5rem">
-            <div class="callout-content">
-              <div class="callout-icon">✅</div>
-              <div class="callout-text">
-                <h4
-                  style="
-                    margin-bottom: 0.5rem;
-                    font-family: 'JetBrains Mono', monospace;
-                    color: var(--matrix-green);
-                  "
-                >
-                  <strong>Confirmed Hardware Platform</strong>
-                </h4>
-                <p>
-                  Raspberry Pi 4B setup successfully completed and verified as
-                  the project's hardware platform. Initial testing confirms
-                  adequate performance for Docker containerization and networked
-                  services.
-                </p>
-              </div>
-            </div>
-          </div>
-
+          <h3 class="subsection-title">Core Network</h3>
           <div class="feature-list">
             <div class="feature-item">
-              <strong>Primary Device:</strong> Raspberry Pi 4 Model B (8 GB RAM)
-              ✅
+              <strong>UDM Pro</strong> (router, firewall, UniFi OS)
             </div>
             <div class="feature-item">
-              <strong>Operating System:</strong> Raspberry Pi OS Lite (64-bit) —
-              Installed & Configured
+              <strong>USW-16-PoE switch</strong>
             </div>
             <div class="feature-item">
-              <strong>Storage:</strong> 128 GB microSD + external SSD for
-              backups
+              <strong>3× UniFi U6 access points</strong>
             </div>
             <div class="feature-item">
-              <strong>Power and Networking:</strong> USB-C power supply, gigabit
-              Ethernet connection
-            </div>
-            <div class="feature-item">
-              <strong>Smart Home Platform:</strong> Homebridge running on
-              Raspberry Pi OS Lite (64-bit)
-            </div>
-            <div class="feature-item">
-              <strong>Software Stack:</strong> Docker, Docker Compose (currently
-              testing), Grafana, Prometheus, pfSense (virtualized), and
-              DVWA/Metasploitable containers
-            </div>
-            <div class="feature-item">
-              <strong>Remote Management:</strong> SSH + VS Code Remote Server
+              <strong>UniFi G4 Doorbell + Smart Chime</strong>
             </div>
           </div>
 
-          <div class="callout info" style="margin-top: 1.5rem">
-            <div class="callout-content">
-              <div class="callout-icon">💡</div>
-              <div class="callout-text">
-                <h4
-                  style="
-                    margin-bottom: 0.5rem;
-                    font-family: 'JetBrains Mono', monospace;
-                    color: var(--neon-cyan);
-                  "
-                >
-                  <strong>Rationale for Change</strong>
-                </h4>
-                <p>
-                  The shift to Raspberry Pi allows rapid prototyping without the
-                  need for multiple physical servers. It demonstrates
-                  adaptability and practical resource management while
-                  maintaining focus on security, networking, and monitoring
-                  objectives. The modification does not change the project's
-                  deliverables, only the hardware and deployment approach.
-                </p>
-              </div>
+          <h3 class="subsection-title">Compute</h3>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Mac mini</strong> (HomeBridge, Scrypted, Docker,
+              Minecraft, DVWA, Kali, Uptime Kuma)
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Storage</h3>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>UNAS Pro NAS</strong> (family files, backups, lab data)
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Smart Home</h3>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Apple TV and HomePod Mini</strong> (Home Hubs)
+            </div>
+            <div class="feature-item">
+              <strong>Philips Hue Bridge + Hue lights</strong>
+            </div>
+            <div class="feature-item">
+              <strong>Wiz lights via HomeBridge</strong>
+            </div>
+            <div class="feature-item">
+              <strong>Ecobee thermostat</strong>
             </div>
           </div>
         </div>
@@ -1851,14 +1809,14 @@
                   <td><strong>Apple HomeKit Smart Home Integration</strong></td>
                   <td>Tangible</td>
                   <td>
-                    Configure and control at least one Apple HomeKit device
-                    through Homebridge running in a Docker container on the
-                    Raspberry Pi by Oct 8, 2025.
+                    Integrate smart devices into Apple Home using Apple TV and
+                    HomePod Mini as Home Hubs, Philips Hue Bridge, Ecobee
+                    thermostat, Wiz lights via HomeBridge on the Mac mini, and
+                    the UniFi G4 Doorbell via Scrypted.
                   </td>
                   <td>
-                    Device successfully paired with Homebridge; controllable via
-                    Apple Home app; screenshots and configuration steps
-                    documented in GitHub.
+                    Demonstrates secure configuration and cross platform
+                    integration.
                   </td>
                 </tr>
                 <tr>
@@ -1870,48 +1828,59 @@
                   </td>
                   <td>Tangible</td>
                   <td>
-                    Configure a segmented network using Docker networks and at
-                    least 2 containers (firewall + client) by Oct 15, 2025.
+                    Use the UDM Pro to create VLANs for Main, IoT, and Lab
+                    networks, with firewall rules that isolate traffic and
+                    protect the main network while still allowing a controlled
+                    lab environment for testing tools and scenarios.
                   </td>
                   <td>
-                    Containers deployed; network segmentation tested; firewall
-                    rules documented; traffic isolation validated.
+                    Network segmentation tested; firewall rules documented;
+                    traffic isolation validated.
                   </td>
                 </tr>
                 <tr>
                   <td><strong>Self-Hosted Minecraft Server</strong></td>
                   <td>Tangible</td>
                   <td>
-                    Deploy a functioning Minecraft server with user access and
-                    backup plan by Oct 22, 2025.
+                    Host a Minecraft server on the Mac mini (Docker or native),
+                    managing users, backups, and connectivity.
                   </td>
                   <td>
-                    Server online; at least 1 external connection tested;
-                    configuration and troubleshooting documented.
+                    Demonstrates service hosting, basic system administration,
+                    and integration with the existing network and lab VLANs.
                   </td>
                 </tr>
                 <tr>
-                  <td><strong>Monitoring & Dashboard</strong></td>
+                  <td>
+                    <strong
+                      >Monitoring and Dashboard – UniFi Dashboard + Uptime
+                      Kuma</strong
+                    >
+                  </td>
                   <td>Intangible</td>
                   <td>
-                    Implement monitoring using Grafana + Prometheus or Uptime
-                    Kuma by Nov 1, 2025.
+                    Use UniFi's built-in dashboard for real-time monitoring of
+                    WAN, switch, APs, and clients, and run Uptime Kuma on the
+                    Mac mini to track uptime for key services like the Minecraft
+                    server, HomeBridge, Scrypted, and the UNAS Pro.
                   </td>
-                  <td>
-                    Metrics collected; dashboards viewable; alerts configured;
-                    screenshots included.
-                  </td>
+                  <td>This replaces the old Grafana/Prometheus plan.</td>
                 </tr>
                 <tr>
-                  <td><strong>Network Attached Storage (NAS) Setup</strong></td>
+                  <td>
+                    <strong
+                      >Vulnerability Lab (DVWA / Metasploit / Kali)</strong
+                    >
+                  </td>
                   <td>Tangible</td>
                   <td>
-                    Configure NAS using TrueNAS or OpenMediaVault by Nov 10,
-                    2025.
+                    Run DVWA, Kali, and Metasploit on the Mac mini using VMs or
+                    containers, isolated inside the Lab VLAN created on the UDM
+                    Pro.
                   </td>
                   <td>
-                    NAS deployed and accessible; file sharing configured; backup
-                    strategy documented.
+                    This lab is for practicing offensive and defensive
+                    techniques in a controlled environment.
                   </td>
                 </tr>
               </tbody>
@@ -1967,15 +1936,13 @@
                 </tr>
                 <tr>
                   <td><span class="code-tag">T2</span></td>
-                  <td>acquire/setup raspberry pi 4b + docker environment</td>
+                  <td>setup mac mini + unas pro + unifi network</td>
                   <td>2 days</td>
                   <td>T1</td>
                 </tr>
                 <tr>
                   <td><span class="code-tag">T3</span></td>
-                  <td>
-                    configure segmented network (docker networks/iptables)
-                  </td>
+                  <td>configure vlans and firewall rules on udm pro</td>
                   <td>4 days</td>
                   <td>T2</td>
                 </tr>
@@ -2050,27 +2017,27 @@
               </thead>
               <tbody>
                 <tr>
+                  <td>Mac mini (compute host)</td>
+                  <td>Already owned</td>
+                </tr>
+                <tr>
+                  <td>UNAS Pro NAS</td>
+                  <td>Already owned</td>
+                </tr>
+                <tr>
+                  <td>UniFi network (UDM Pro, USW-16-PoE, APs, G4 Doorbell)</td>
+                  <td>Already owned</td>
+                </tr>
+                <tr>
                   <td>
-                    raspberry pi 4b (8gb) + accessories (case, power, microsd,
-                    ssd)
+                    Smart home devices (Hue Bridge, Apple TV, HomePod Mini,
+                    Ecobee, Wiz lights)
                   </td>
-                  <td>$150–200</td>
+                  <td>Already owned</td>
                 </tr>
                 <tr>
-                  <td>networking gear (router, switch, cabling)</td>
-                  <td>$200</td>
-                </tr>
-                <tr>
-                  <td>smart device (homekit light/thermostat)</td>
-                  <td>$50–100</td>
-                </tr>
-                <tr>
-                  <td>external hdd / backup storage</td>
-                  <td>$80</td>
-                </tr>
-                <tr>
-                  <td>misc. software/subscriptions (domains, cloud credits)</td>
-                  <td>$100</td>
+                  <td>(Optional) Additional SSD or HDDs for the UNAS Pro</td>
+                  <td>$100–200</td>
                 </tr>
                 <tr
                   style="
@@ -2078,46 +2045,11 @@
                     background: rgba(0, 255, 65, 0.1);
                   "
                 >
-                  <td><strong>total estimated cost</strong></td>
-                  <td><strong>$580–680</strong></td>
+                  <td><strong>total new cost</strong></td>
+                  <td><strong>$0–200</strong></td>
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- New Items Needed -->
-      <div class="section" id="new-items">
-        <div class="section-header" onclick="toggleSection(this)">
-          <h2 class="section-title">
-            <span class="emoji">🆕</span>
-            new items needed
-          </h2>
-          <div class="collapse-indicator">▶</div>
-        </div>
-        <div class="section-content">
-          <div class="feature-list">
-            <div class="feature-item">
-              <strong>raspberry pi 4b (8gb)</strong> - primary homelab platform
-              for containerized services and prototyping
-            </div>
-            <div class="feature-item">
-              <strong>microsd card (128gb) + external ssd</strong> - os boot
-              drive and backup storage
-            </div>
-            <div class="feature-item">
-              <strong>networking gear</strong> - switch/router with vlan support
-              (or simulated via docker networks)
-            </div>
-            <div class="feature-item">
-              <strong>at least 1 homekit-compatible device</strong> - smart
-              light/thermostat
-            </div>
-            <div class="feature-item">
-              <strong>optional cloud credits</strong> - aws/azure/gcp, learning
-              use only
-            </div>
           </div>
         </div>
       </div>
@@ -2897,22 +2829,22 @@
                 </div>
                 <div class="hlm-card r2 c2">
                   <ul>
-                    <li>Setup Raspberry Pi 4B</li>
-                    <li>Install Docker & Docker Compose</li>
-                    <li>Plan container network segmentation</li>
+                    <li>Setup Mac mini + UNAS Pro</li>
+                    <li>Configure UniFi network (UDM Pro, switch, APs)</li>
+                    <li>Plan VLAN segmentation</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c3">
                   <ul>
-                    <li>Configure Docker networks</li>
-                    <li>Setup iptables rules for isolation</li>
+                    <li>Configure VLANs on UDM Pro</li>
+                    <li>Setup firewall rules for isolation</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c4">
                   <ul>
-                    <li>Deploy HomeKit bridge container</li>
-                    <li>Deploy Minecraft server container</li>
-                    <li>Deploy DVWA / Metasploitable containers</li>
+                    <li>Deploy HomeBridge + Scrypted on Mac mini</li>
+                    <li>Deploy Minecraft server</li>
+                    <li>Deploy DVWA / Kali / Metasploit VMs</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c5">
@@ -2923,7 +2855,7 @@
                 </div>
                 <div class="hlm-card r2 c6">
                   <ul>
-                    <li>Configure Grafana/Prometheus</li>
+                    <li>Configure UniFi Dashboard</li>
                     <li>Setup Uptime Kuma</li>
                     <li>Configure alerts</li>
                   </ul>
@@ -2951,13 +2883,13 @@
                 </div>
                 <div class="hlm-card r3 c2">
                   <ul>
-                    <li>Draft Project Charter v3 (updated for RPi)</li>
+                    <li>Draft Project Charter v3 (Mac mini + UniFi)</li>
                     <li>Create GitHub repo</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c3">
                   <ul>
-                    <li>Update network/container docs</li>
+                    <li>Update network/VLAN docs</li>
                     <li>Add screenshots</li>
                   </ul>
                 </div>
@@ -3341,11 +3273,12 @@
                   <strong>Project Name:</strong> HomeLab Integration Project
                 </p>
                 <p>
-                  <strong>Project Goal:</strong> Build five key homelab
-                  deliverables—HomeKit integration, segmented test environment,
-                  Minecraft server, monitoring dashboard, and NAS setup—to gain
-                  practical networking and cybersecurity skills. All outcomes
-                  will be documented during the semester.
+                  <strong>Project Goal:</strong> Build and document a HomeLab
+                  environment that uses a Mac mini compute host, a UNAS Pro NAS,
+                  and a UniFi-based network (UDM Pro, USW-16-PoE, UniFi APs).
+                  The goal is to demonstrate practical skills in networking,
+                  security, systems administration, and smart home integration
+                  in a way that is clean and portfolio-ready.
                 </p>
               </div>
             </div>
@@ -3484,8 +3417,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Updated the plan to reflect migration to Raspberry Pi 4B
-                    hardware.
+                    Updated the plan to reflect Mac mini and UniFi network
+                    hardware setup.
                   </p>
                   <p
                     style="
@@ -3494,8 +3427,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Reordered tasks to focus on Docker environment setup and
-                    Homebridge integration.
+                    Reordered tasks to focus on VLAN configuration and
+                    HomeBridge/Scrypted integration.
                   </p>
                   <p
                     style="
@@ -3544,8 +3477,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Updated project plan to include Docker testing tasks within
-                    the implementation phase.
+                    Updated project plan to include VLAN and service testing
+                    tasks within the implementation phase.
                   </p>
                   <p
                     style="
@@ -3554,8 +3487,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Added milestones for Homebridge container deployment and
-                    Grafana monitoring setup.
+                    Added milestones for HomeBridge/Scrypted deployment and
+                    Uptime Kuma monitoring setup.
                   </p>
                   <p
                     style="
@@ -3564,8 +3497,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Adjusted sequence of testing tasks to match the Raspberry Pi
-                    environment limitations.
+                    Adjusted sequence of testing tasks to align with the Mac
+                    mini and UniFi network environment.
                   </p>
                   <p
                     style="
@@ -3837,47 +3770,45 @@
           },
           week2: {
             date: "Week of October 13",
-            health: "In Progress", // Custom status for "In Progress – Shifting Hardware Platform"
+            health: "In Progress", // Custom status for "In Progress – Hardware Platform Setup"
             healthColor: "#ffff00", // yellow
             executiveSummary:
-              "The HomeLab implementation has been adjusted to use a Raspberry Pi 4B as the primary hardware platform. This change supports early testing and cost efficiency while keeping the project aligned with its learning objectives. Initial setup is underway, including OS installation and SSH access configuration. Network segmentation and monitoring tasks have been rescheduled to follow stable server verification.",
+              "The HomeLab implementation is using a Mac mini as the primary compute host and UNAS Pro for storage, integrated with the UniFi network (UDM Pro, USW-16-PoE, UniFi APs). Initial setup is underway, including OS configuration and network integration. VLAN segmentation and monitoring tasks have been scheduled.",
             accomplishments: [
-              "Selected Raspberry Pi 4B as the HomeLab prototype platform",
-              "Installed Raspberry Pi OS Lite and performed system updates",
-              "Configured SSH access and static IP for local management",
-              "Drafted new network layout adapted for single-device prototype",
-              "Updated project charter to reflect Raspberry Pi implementation and revised budget ($580-680)",
+              "Selected Mac mini as the HomeLab compute platform",
+              "Configured Mac mini with macOS and installed Docker",
+              "Set up UNAS Pro NAS for storage and backups",
+              "Drafted new network layout with VLANs on UDM Pro",
+              "Updated project charter to reflect Mac mini + UniFi implementation",
             ],
             nextWeekPlan: [
-              "Install and test Docker with containerized services (Grafana, Prometheus, Minecraft)",
+              "Configure VLANs on UDM Pro for Main, IoT, and Lab networks",
               "Begin documenting setup steps and screenshots for the report",
-              "Research options to simulate VLAN segmentation using Docker networks",
+              "Set up HomeBridge and Scrypted on the Mac mini",
               "Push documentation and configuration notes to GitHub",
             ],
             upcomingMilestones: [
-              "Container Environment Operational – Due Oct 22 2025",
+              "VLAN Segmentation Operational – Due Oct 22 2025",
               "Monitoring Stack Configured – Due Oct 29 2025",
-              "Prototype Security Lab Setup – Due Nov 5 2025",
+              "Vulnerability Lab Setup – Due Nov 5 2025",
             ],
             issuesRisks: [
               {
                 issue:
-                  "Limited compute capacity on Raspberry Pi for full multi-VM deployment",
+                  "Learning curve with UniFi VLAN and firewall configuration",
                 mitigation:
-                  "Use lightweight Docker containers and offload heavier services to cloud VMs if required",
+                  "Allocated extra time for research; using UniFi documentation and community forums",
               },
               {
-                issue:
-                  "VLAN segmentation not natively supported on single-board hardware",
+                issue: "Coordinating services across Mac mini and UNAS Pro",
                 mitigation:
-                  "Simulate network isolation through Docker networks and iptables rules",
+                  "Document all configurations and test connectivity between systems",
               },
             ],
             changes: [
-              "Shifted hardware plan from multi-device setup to Raspberry Pi prototype",
-              "Updated project charter with new Hardware/Resources section detailing Raspberry Pi stack",
-              "Revised budget from $1,000 to $580-680 reflecting cost savings from hardware change",
-              "Updated milestones and tasks to focus on containerization and documentation",
+              "Finalized hardware plan with Mac mini, UNAS Pro, and UniFi network",
+              "Updated project charter with new Hardware/Resources section",
+              "Updated milestones and tasks to focus on VLAN configuration and service deployment",
               "Scope and learning outcomes remain unchanged",
             ],
           },
@@ -3886,38 +3817,38 @@
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "This week focused on stabilizing the Raspberry Pi 4B environment and beginning Docker configuration tests. The Notion Kanban board is now live and fully embedded in the site to reflect real-time progress. Documentation for setup and network configuration has been started.",
+              "This week focused on stabilizing the Mac mini environment and configuring VLANs on the UDM Pro. The Notion Kanban board is now live and fully embedded in the site to reflect real-time progress. Documentation for setup and network configuration has been started.",
             accomplishments: [
-              "Finalized Raspberry Pi 4B system configuration",
-              "Installed and tested Docker + Docker Compose",
+              "Finalized Mac mini system configuration",
+              "Configured VLANs on UDM Pro for network segmentation",
               "Created GitHub documentation page for network configuration steps",
               "Embedded Notion Kanban into project site",
             ],
             nextWeekPlan: [
-              "Build and deploy Homebridge container",
-              "Test multi-container networking",
-              "Begin monitoring setup (Grafana/Prometheus)",
+              "Deploy HomeBridge and Scrypted on Mac mini",
+              "Test VLAN isolation and firewall rules",
+              "Begin monitoring setup (UniFi Dashboard + Uptime Kuma)",
               "Capture screenshots and finalize documentation for next progress report",
             ],
             upcomingMilestones: [
               "Monitoring Stack Configured – Due Oct 29 2025",
-              "Prototype Security Lab Setup – Due Nov 5 2025",
+              "Vulnerability Lab Setup – Due Nov 5 2025",
               "Final Documentation & Presentation – Due Nov 12 2025",
             ],
             issuesRisks: [
               {
-                issue: "Docker networking limitations on ARM hardware",
-                mitigation:
-                  "Use lightweight containers and simulated segmentation",
+                issue: "VLAN firewall rule complexity",
+                mitigation: "Test each rule incrementally and document results",
               },
               {
-                issue: "Raspberry Pi thermals under load",
-                mitigation: "Enable passive cooling and monitor with Grafana",
+                issue: "Service coordination across devices",
+                mitigation:
+                  "Monitor with Uptime Kuma and document dependencies",
               },
             ],
             changes: [
               "Added live Notion Kanban integration",
-              "Adjusted timeline to include Docker testing before Homebridge deployment",
+              "Adjusted timeline to include VLAN testing before service deployment",
               "No budget or scope changes",
             ],
           },
@@ -3926,25 +3857,25 @@
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "Progress this week focused on refining documentation, expanding project showcase planning, and optimizing container resources on the Raspberry Pi. The system remains stable under multi-container workloads. Initial monitoring tests have begun, and preparations for Grafana dashboard deployment and Minecraft server testing are in progress.",
+              "Progress this week focused on refining documentation, expanding project showcase planning, and configuring services on the Mac mini. The system remains stable with all VLANs operational. Initial monitoring tests have begun, and preparations for Uptime Kuma dashboard deployment and Minecraft server testing are in progress.",
             accomplishments: [
               "Updated project charter to include external showcase focus (Reddit + LinkedIn)",
-              "Tuned Docker performance for Raspberry Pi stability",
-              "Created preliminary Grafana dashboard layouts",
+              "Configured services on Mac mini for stability",
+              "Set up preliminary Uptime Kuma dashboard",
               "Planned Reddit showcase structure",
             ],
             nextWeekPlan: [
-              "Deploy and test Minecraft server container",
-              "Finalize Grafana / Prometheus dashboard setup",
+              "Deploy and test Minecraft server on Mac mini",
+              "Finalize UniFi Dashboard + Uptime Kuma setup",
               "Capture visuals for documentation and Reddit post",
-              "Continue refining NAS configuration",
+              "Continue refining UNAS Pro configuration",
             ],
             upcomingMilestones: [],
             issuesRisks: [
               {
-                issue: "CPU load spikes from multiple containers",
+                issue: "CPU load spikes from multiple services",
                 mitigation:
-                  "Adjust Docker resource limits and monitor performance with Grafana",
+                  "Adjust resource allocation and monitor performance with Uptime Kuma",
               },
               {
                 issue: "Time management between testing and documentation",
@@ -3953,8 +3884,8 @@
               },
             ],
             changes: [
-              "Added Grafana milestone to implementation phase",
-              "Reordered NAS setup to follow monitoring stage",
+              "Added Uptime Kuma milestone to implementation phase",
+              "Reordered UNAS Pro setup to follow monitoring stage",
               "Expanded reflection section to include project showcasing component",
             ],
           },
@@ -3963,9 +3894,9 @@
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "This week I kept working on my Homelab project setup. I continued Docker testing, cleaned up the monitoring setup, and updated parts of the methodology diagram and charter. I also started mapping out my screenshot flow for the final deliverables.",
+              "This week I kept working on my Homelab project setup. I continued service testing on the Mac mini, cleaned up the monitoring setup, and updated parts of the methodology diagram and charter. I also started mapping out my screenshot flow for the final deliverables.",
             accomplishments: [
-              "Continued Docker container testing",
+              "Continued service testing on Mac mini",
               "Cleaned up monitoring setup",
               "Updated methodology diagram",
               "Added details to the charter",
@@ -3978,13 +3909,13 @@
               "Wrap up testing, update documentation, prep closure materials, and plan how to share the project publicly.",
             ],
             upcomingMilestones: [
-              "Final Docker validation",
+              "Final service validation",
               "Lessons Learned",
               "Stakeholder interview planning",
             ],
             issuesRisks: [
               {
-                issue: "Slowdowns due to hardware limits and long build times",
+                issue: "Time constraints for finalizing all documentation",
                 mitigation: "Continue monitoring and optimize where possible",
               },
             ],
@@ -3995,10 +3926,10 @@
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "This week I shifted from technical work into preparing final documentation. I updated my project docs, finished another round of Docker testing, and organized my files. I also planned out my public GitHub repo and drafted my Reddit post.",
+              "This week I shifted from technical work into preparing final documentation. I updated my project docs, finished another round of service testing, and organized my files. I also planned out my public GitHub repo and drafted my Reddit post.",
             accomplishments: [
               "Updated project documentation",
-              "Finished Docker testing",
+              "Finished service testing on Mac mini",
               "Organized files for final deliverables",
               "Planned GitHub repo structure",
               "Drafted Reddit write up",
@@ -4018,9 +3949,9 @@
             ],
             issuesRisks: [
               {
-                issue: "Raspberry Pi hardware slows down testing",
+                issue: "Time constraints for final deliverables",
                 mitigation:
-                  "Work within hardware constraints and optimize testing approach",
+                  "Prioritize key deliverables and optimize testing approach",
               },
             ],
             changes: [
