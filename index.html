@@ -604,7 +604,7 @@
 
       .section.expanded .section-content {
         padding: 2rem;
-        max-height: 2000px;
+        max-height: 5000px;
       }
 
       /* Enhanced Typography */
@@ -1407,13 +1407,57 @@
         <div class="section-content">
           <h3 class="subsection-title">🎯 project overview</h3>
           <p class="text-content">
-            This homelab project is built using a Mac mini as the primary
-            compute host and a UNAS Pro as the storage system, integrated into
-            my existing UniFi network (UDM Pro, USW-16-PoE, and UniFi APs). The
-            goal is to build a clean, realistic network + security lab that
-            demonstrates smart home integration, segmentation, monitoring,
-            hosting services, and a safe vulnerability testing environment.
+            This homelab project demonstrates applied project management through
+            hands-on technical implementation. The goal is to build a clean,
+            realistic network + security lab that showcases smart home
+            integration, network segmentation, monitoring, service hosting, and
+            vulnerability testing — all integrated with my existing UniFi
+            network infrastructure (UDM Pro, USW-16-PoE, and UniFi APs).
           </p>
+
+          <div class="callout success" style="margin-bottom: 2rem">
+            <div class="callout-content">
+              <div class="callout-icon">🔄</div>
+              <div class="callout-text">
+                <h4
+                  style="
+                    margin-bottom: 0.75rem;
+                    font-family: 'JetBrains Mono', monospace;
+                    color: var(--matrix-green);
+                    font-size: 1.1rem;
+                  "
+                >
+                  <strong>Hardware Evolution: Adaptive Risk Management</strong>
+                </h4>
+                <p
+                  style="
+                    margin-bottom: 0.5rem;
+                    line-height: 1.6;
+                    color: var(--text-secondary);
+                  "
+                >
+                  <strong style="color: var(--laser-orange)"
+                    >Phase 1 (Weeks 8-13):</strong
+                  >
+                  Started with Raspberry Pi 4B for initial prototyping, VLAN
+                  testing, and service validation
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    line-height: 1.6;
+                    color: var(--text-secondary);
+                  "
+                >
+                  <strong style="color: var(--matrix-green)"
+                    >Phase 2 (Week 14+):</strong
+                  >
+                  Pivoted to Mac Mini + UNAS Pro for production capacity and
+                  long-term scalability
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div class="scope-grid">
             <div class="scope-card in-scope">
@@ -1553,17 +1597,129 @@
           </div>
 
           <h3 class="subsection-title">Compute</h3>
+          <div class="callout info" style="margin-bottom: 1.5rem">
+            <div class="callout-content">
+              <div class="callout-icon">🔄</div>
+              <div class="callout-text">
+                <p
+                  style="
+                    margin: 0;
+                    line-height: 1.6;
+                    color: var(--text-secondary);
+                  "
+                >
+                  <strong style="color: var(--neon-cyan)"
+                    >Hardware Evolution:</strong
+                  >
+                  This project started with a Raspberry Pi 4B and pivoted to Mac
+                  Mini + UNAS Pro in Week 14 as part of an adaptive risk
+                  management strategy.
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="feature-list">
-            <div class="feature-item">
-              <strong>Mac mini</strong> (HomeBridge, Scrypted, Docker,
-              Minecraft, DVWA, Kali, Uptime Kuma)
+            <div
+              class="feature-item"
+              style="border-left-color: var(--laser-orange)"
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    background: var(--laser-orange);
+                    color: var(--bg-primary);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    font-family: 'JetBrains Mono', monospace;
+                    text-transform: uppercase;
+                  "
+                  >Phase 1: Weeks 8-13</span
+                >
+              </div>
+              <strong>Raspberry Pi 4B (8GB RAM)</strong><br />
+              <span style="color: var(--text-muted); font-size: 0.95rem">
+                Initial compute platform for Docker containers, VLAN testing,
+                and service validation
+              </span>
+            </div>
+            <div
+              class="feature-item"
+              style="border-left-color: var(--matrix-green)"
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    background: var(--matrix-green);
+                    color: var(--bg-primary);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    font-family: 'JetBrains Mono', monospace;
+                    text-transform: uppercase;
+                  "
+                  >Phase 2: Week 14+</span
+                >
+              </div>
+              <strong>Mac mini</strong><br />
+              <span style="color: var(--text-muted); font-size: 0.95rem">
+                Final compute platform for HomeBridge, Scrypted, Docker,
+                Minecraft, DVWA, Kali, Uptime Kuma
+              </span>
             </div>
           </div>
 
           <h3 class="subsection-title">Storage</h3>
           <div class="feature-list">
-            <div class="feature-item">
-              <strong>UNAS Pro NAS</strong> (family files, backups, lab data)
+            <div
+              class="feature-item"
+              style="border-left-color: var(--matrix-green)"
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  margin-bottom: 0.5rem;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    background: var(--matrix-green);
+                    color: var(--bg-primary);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    font-family: 'JetBrains Mono', monospace;
+                    text-transform: uppercase;
+                  "
+                  >Added Week 14</span
+                >
+              </div>
+              <strong>UNAS Pro NAS</strong><br />
+              <span style="color: var(--text-muted); font-size: 0.95rem">
+                Dedicated storage for family files, backups, and lab data
+              </span>
             </div>
           </div>
 
@@ -2495,13 +2651,37 @@
 
                 @media (max-width: 1024px) {
                   .timeline-grid {
-                    grid-template-columns: 150px repeat(3, minmax(0, 1fr));
+                    grid-template-columns: 140px repeat(3, minmax(0, 1fr));
                     grid-template-rows: auto repeat(9, 1fr);
-                    gap: 10px;
+                    gap: 12px;
                   }
 
-                  .timeline-grid .hlm-lane-label,
+                  .timeline-grid .hlm-lane-label {
+                    font-size: 0.75rem;
+                    padding: 0.75rem 0.5rem;
+                  }
+
                   .timeline-grid .hlm-card {
+                    font-size: 0.75rem;
+                    padding: 0.75rem 0.5rem;
+                    min-height: 100px;
+                  }
+
+                  .timeline-grid .hlm-card ul {
+                    margin: 0;
+                    padding-left: 1.25rem;
+                  }
+
+                  .timeline-grid .hlm-card li {
+                    margin-bottom: 0.5rem;
+                    line-height: 1.4;
+                  }
+
+                  .hlm-phase-num {
+                    font-size: 1.1rem;
+                  }
+
+                  .hlm-phase-weeks {
                     font-size: 0.7rem;
                   }
 
@@ -2784,11 +2964,101 @@
                     gap: 0.75rem;
                   }
                 }
+
+                /* Extra small screens (phones) - single column layout */
+                @media (max-width: 640px) {
+                  .timeline-grid {
+                    grid-template-columns: 100px 1fr;
+                    grid-template-rows: auto;
+                    gap: 10px;
+                  }
+
+                  .hlm-title {
+                    font-size: 1.1rem;
+                  }
+
+                  .hlm-subtitle {
+                    font-size: 0.85rem;
+                  }
+
+                  .timeline-grid .hlm-lane-label {
+                    font-size: 0.7rem;
+                    padding: 0.5rem 0.35rem;
+                    line-height: 1.3;
+                  }
+
+                  .timeline-grid .hlm-card {
+                    font-size: 0.7rem;
+                    padding: 0.6rem 0.4rem;
+                    min-height: 80px;
+                  }
+
+                  .timeline-grid .hlm-card ul {
+                    padding-left: 1rem;
+                  }
+
+                  .timeline-grid .hlm-card li {
+                    margin-bottom: 0.4rem;
+                    line-height: 1.3;
+                  }
+
+                  .hlm-phase-num {
+                    font-size: 1rem;
+                  }
+
+                  .hlm-phase-weeks {
+                    font-size: 0.65rem;
+                  }
+
+                  /* Stack all phase headers horizontally on phone */
+                  .timeline-grid .r1.c2,
+                  .timeline-grid .r1.c3,
+                  .timeline-grid .r1.c4 {
+                    grid-row: 1;
+                  }
+
+                  .timeline-grid .r1.c2 {
+                    grid-column: 2;
+                  }
+
+                  /* Hide phase 2 and 3 headers to save space */
+                  .timeline-grid .r1.c3,
+                  .timeline-grid .r1.c4 {
+                    display: none;
+                  }
+
+                  .hlm-continuous-title {
+                    font-size: 0.8rem;
+                  }
+
+                  .hlm-continuous-item {
+                    font-size: 0.7rem;
+                    padding: 0.4rem 0.6rem;
+                  }
+                }
               </style>
 
               <div class="hlm-header">
                 <h3 class="hlm-title">CIS 4860 – HomeLab Implementation</h3>
-                <p class="hlm-subtitle">Methodology Timeline (Weeks 1–16)</p>
+                <p class="hlm-subtitle">Methodology Timeline (Weeks 8–15)</p>
+                <p
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-size: 0.85rem;
+                    color: var(--text-muted);
+                    margin-top: 0.5rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  <span style="color: var(--laser-orange)"
+                    >Phase 1 (Weeks 8-13):</span
+                  >
+                  Raspberry Pi |
+                  <span style="color: var(--matrix-green)"
+                    >Phase 2 (Weeks 14-15):</span
+                  >
+                  Mac Mini + UNAS Pro
+                </p>
               </div>
 
               <div class="timeline-grid">
@@ -2796,31 +3066,31 @@
                 <div class="corner-spacer r1 c1"></div>
                 <div class="header hlm-phase r1 c2">
                   <span class="hlm-phase-num">1</span>
-                  <span class="hlm-phase-weeks">Weeks 1-3</span>
+                  <span class="hlm-phase-weeks">Week 8</span>
                 </div>
                 <div class="header hlm-phase r1 c3">
                   <span class="hlm-phase-num">2</span>
-                  <span class="hlm-phase-weeks">Weeks 4-6</span>
+                  <span class="hlm-phase-weeks">Weeks 9-10</span>
                 </div>
                 <div class="header hlm-phase r1 c4">
                   <span class="hlm-phase-num">3</span>
-                  <span class="hlm-phase-weeks">Weeks 7-9</span>
+                  <span class="hlm-phase-weeks">Weeks 11-13</span>
                 </div>
                 <div class="header hlm-phase r1 c5">
                   <span class="hlm-phase-num">4</span>
-                  <span class="hlm-phase-weeks">Weeks 10-12</span>
+                  <span class="hlm-phase-weeks">Week 14</span>
                 </div>
                 <div class="header hlm-phase r1 c6">
                   <span class="hlm-phase-num">5</span>
-                  <span class="hlm-phase-weeks">Weeks 13-14</span>
+                  <span class="hlm-phase-weeks">Week 15</span>
                 </div>
                 <div class="header hlm-phase r1 c7">
                   <span class="hlm-phase-num">6</span>
-                  <span class="hlm-phase-weeks">Weeks 15-16</span>
+                  <span class="hlm-phase-weeks">Finals</span>
                 </div>
                 <div class="header hlm-phase r1 c8">
                   <span class="hlm-phase-num">7</span>
-                  <span class="hlm-phase-weeks">Weeks 15-16</span>
+                  <span class="hlm-phase-weeks">Closure</span>
                 </div>
 
                 <!-- Row 2: Technical Implementation -->
@@ -2829,7 +3099,7 @@
                 </div>
                 <div class="hlm-card r2 c2">
                   <ul>
-                    <li>Setup Mac mini + UNAS Pro</li>
+                    <li>Setup Raspberry Pi 4B (8GB RAM)</li>
                     <li>Configure UniFi network (UDM Pro, switch, APs)</li>
                     <li>Plan VLAN segmentation</li>
                   </ul>
@@ -2838,42 +3108,42 @@
                   <ul>
                     <li>Configure VLANs on UDM Pro</li>
                     <li>Setup firewall rules for isolation</li>
+                    <li>Deploy test containers on Raspberry Pi</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c4">
                   <ul>
-                    <li>Deploy HomeBridge + Scrypted on Mac mini</li>
-                    <li>Deploy Minecraft server</li>
-                    <li>Deploy DVWA / Kali / Metasploit VMs</li>
+                    <li>Deploy HomeBridge on Raspberry Pi</li>
+                    <li>Test VLAN isolation & monitoring</li>
+                    <li>Document Pi performance limits</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c5">
                   <ul>
-                    <li>Vulnerability scans (Nmap, OpenVAS)</li>
-                    <li>System hardening</li>
+                    <li>Hardware pivot: Mac mini + UNAS Pro</li>
+                    <li>Migrate services from Raspberry Pi</li>
+                    <li>Configure network segments</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c6">
                   <ul>
-                    <li>Configure UniFi Dashboard</li>
-                    <li>Setup Uptime Kuma</li>
-                    <li>Configure alerts</li>
+                    <li>Deploy Scrypted on Mac mini</li>
+                    <li>Setup Uptime Kuma monitoring</li>
+                    <li>Configure UNAS Pro storage</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c7">
                   <ul>
-                    <li>Final backups</li>
+                    <li>Final service testing</li>
+                    <li>System backups</li>
                     <li>Demo recording</li>
                   </ul>
                 </div>
                 <div class="hlm-card showcase-phase r2 c8">
                   <ul>
-                    <li>
-                      Publish Reddit + LinkedIn posts (findings, lessons,
-                      screenshots)
-                    </li>
-                    <li>Finalize GitHub docs & reflection</li>
-                    <li>Submit final packet / presentation</li>
+                    <li>Stakeholder interviews</li>
+                    <li>STAR stories & lessons learned</li>
+                    <li>Final presentation & packet</li>
                   </ul>
                 </div>
 
@@ -2883,48 +3153,47 @@
                 </div>
                 <div class="hlm-card r3 c2">
                   <ul>
-                    <li>Draft Project Charter v3 (Mac mini + UniFi)</li>
-                    <li>Create GitHub repo</li>
+                    <li>Draft Project Charter v3 (Raspberry Pi + UniFi)</li>
+                    <li>Create GitHub repo & project site</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c3">
                   <ul>
                     <li>Update network/VLAN docs</li>
-                    <li>Add screenshots</li>
+                    <li>Document Pi setup & testing</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c4">
                   <ul>
-                    <li>Record configs</li>
-                    <li>Hardening notes</li>
+                    <li>Document Pi performance limits</li>
+                    <li>Plan hardware upgrade path</li>
+                    <li>Capture lessons learned</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c5">
                   <ul>
+                    <li>Update charter for Mac mini pivot</li>
+                    <li>Document migration process</li>
                     <li>Update risk register</li>
-                    <li>Document mitigations</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c6">
                   <ul>
-                    <li>Finalize dashboards</li>
-                    <li>Complete documentation</li>
+                    <li>Finalize dashboards & monitoring</li>
+                    <li>Complete technical documentation</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c7">
                   <ul>
-                    <li>Final report & slides</li>
-                    <li>Polish GitHub Pages</li>
+                    <li>Closure document & slides</li>
+                    <li>Polish GitHub Pages site</li>
                   </ul>
                 </div>
                 <div class="hlm-card showcase-phase r3 c8">
                   <ul>
-                    <li>
-                      Publish Reddit + LinkedIn posts (findings, lessons,
-                      screenshots)
-                    </li>
-                    <li>Finalize GitHub docs & reflection</li>
-                    <li>Submit final packet / presentation</li>
+                    <li>Complete closure website</li>
+                    <li>Finalize lessons learned register</li>
+                    <li>Submit final packet</li>
                   </ul>
                 </div>
 
@@ -2932,47 +3201,44 @@
                 <div class="hlm-lane-label r4 c1">Testing<br />& Reporting</div>
                 <div class="hlm-card r4 c2">
                   <ul>
-                    <li>Submit Week 1–3 update</li>
+                    <li>Submit Week 8 status report</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c3">
                   <ul>
-                    <li>Verify connectivity</li>
-                    <li>Week 6 Report</li>
+                    <li>Test VLAN connectivity on Pi</li>
+                    <li>Submit Week 9-10 reports</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c4">
                   <ul>
-                    <li>Service tests</li>
-                    <li>Week 9 Report</li>
+                    <li>Service validation on Pi</li>
+                    <li>Submit Week 11-13 reports</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c5">
                   <ul>
-                    <li>Exploit/defense tests</li>
-                    <li>Week 12 Report</li>
+                    <li>Test Mac mini + UNAS Pro integration</li>
+                    <li>Submit Week 14 report</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c6">
                   <ul>
-                    <li>Performance testing</li>
-                    <li>Week 14 Report</li>
+                    <li>End-to-end system testing</li>
+                    <li>Submit Week 15 report</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c7">
                   <ul>
-                    <li>Peer feedback</li>
-                    <li>Final submission</li>
+                    <li>Conduct stakeholder interviews</li>
+                    <li>Review feedback forms</li>
                   </ul>
                 </div>
                 <div class="hlm-card showcase-phase r4 c8">
                   <ul>
-                    <li>
-                      Publish Reddit + LinkedIn posts (findings, lessons,
-                      screenshots)
-                    </li>
-                    <li>Finalize GitHub docs & reflection</li>
-                    <li>Submit final packet / presentation</li>
+                    <li>Final presentation delivery</li>
+                    <li>Submit closure packet</li>
+                    <li>Publish project showcase</li>
                   </ul>
                 </div>
               </div>
@@ -3267,19 +3533,48 @@
                     color: var(--neon-cyan);
                   "
                 >
-                  <strong>Basic Information</strong>
+                  <strong>Project Status Timeline</strong>
                 </h4>
-                <p style="margin-bottom: 0.5rem">
+                <p style="margin-bottom: 0.75rem">
                   <strong>Project Name:</strong> HomeLab Integration Project
                 </p>
-                <p>
-                  <strong>Project Goal:</strong> Build and document a HomeLab
-                  environment that uses a Mac mini compute host, a UNAS Pro NAS,
-                  and a UniFi-based network (UDM Pro, USW-16-PoE, UniFi APs).
-                  The goal is to demonstrate practical skills in networking,
-                  security, systems administration, and smart home integration
-                  in a way that is clean and portfolio-ready.
+                <p style="margin-bottom: 1rem; line-height: 1.6">
+                  <strong>Weekly Reports Overview:</strong> The status reports
+                  below document the complete project journey from Week 8
+                  through Week 15, including the hardware evolution from
+                  Raspberry Pi to Mac Mini + UNAS Pro.
                 </p>
+                <div
+                  style="
+                    background: var(--bg-secondary);
+                    border-left: 3px solid var(--laser-orange);
+                    padding: 1rem;
+                    border-radius: 4px;
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  <strong style="color: var(--laser-orange)"
+                    >📍 Weeks 8-13:</strong
+                  >
+                  <span style="color: var(--text-muted)">
+                    Raspberry Pi phase (prototyping & validation)</span
+                  >
+                </div>
+                <div
+                  style="
+                    background: var(--bg-secondary);
+                    border-left: 3px solid var(--matrix-green);
+                    padding: 1rem;
+                    border-radius: 4px;
+                  "
+                >
+                  <strong style="color: var(--matrix-green)"
+                    >📍 Weeks 14-15:</strong
+                  >
+                  <span style="color: var(--text-muted)">
+                    Mac Mini + UNAS Pro phase (production deployment)</span
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -3296,10 +3591,18 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Example status report row -->
-                <!-- Note: Use the Monday date for the week start -->
-                <tr>
-                  <td>Week of October 6</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 8
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-low">On Track</span>
                   </td>
@@ -3307,14 +3610,24 @@
                     <button
                       class="nav-btn"
                       style="padding: 6px 12px; font-size: 11px"
-                      onclick="openStatusReport('week1')"
+                      onclick="openStatusReport('week8')"
                     >
                       View Report
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>Week of October 13</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 9
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-medium"
                       >In Progress</span
@@ -3324,14 +3637,24 @@
                     <button
                       class="nav-btn"
                       style="padding: 6px 12px; font-size: 11px"
-                      onclick="openStatusReport('week2')"
+                      onclick="openStatusReport('week9')"
                     >
                       View Report
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>Week of October 20</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 10
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-low">On Track</span>
                   </td>
@@ -3339,14 +3662,24 @@
                     <button
                       class="nav-btn"
                       style="padding: 6px 12px; font-size: 11px"
-                      onclick="openStatusReport('week3')"
+                      onclick="openStatusReport('week10')"
                     >
                       View Report
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>Week of November 3</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 11
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-low">On Track</span>
                   </td>
@@ -3354,14 +3687,24 @@
                     <button
                       class="nav-btn"
                       style="padding: 6px 12px; font-size: 11px"
-                      onclick="openStatusReport('week4')"
+                      onclick="openStatusReport('week11')"
                     >
                       View Report
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>Week 12</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 12
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-low">On Track</span>
                   </td>
@@ -3375,8 +3718,18 @@
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>Week 13</td>
+                <tr style="border-left: 3px solid var(--laser-orange)">
+                  <td>
+                    Week 13
+                    <span
+                      style="
+                        color: var(--laser-orange);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
                   <td>
                     <span class="priority-tag priority-low">On Track</span>
                   </td>
@@ -3390,12 +3743,61 @@
                     </button>
                   </td>
                 </tr>
-                <!-- Add more status report rows here -->
+                <tr style="border-left: 3px solid var(--matrix-green)">
+                  <td>
+                    Week 14
+                    <span
+                      style="
+                        color: var(--matrix-green);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week14')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
+                <tr style="border-left: 3px solid var(--matrix-green)">
+                  <td>
+                    Week 15
+                    <span
+                      style="
+                        color: var(--matrix-green);
+                        font-size: 0.7rem;
+                        margin-left: 0.5rem;
+                      "
+                      >●</span
+                    >
+                  </td>
+                  <td>
+                    <span class="priority-tag priority-low">On Track</span>
+                  </td>
+                  <td>
+                    <button
+                      class="nav-btn"
+                      style="padding: 6px 12px; font-size: 11px"
+                      onclick="openStatusReport('week15')"
+                    >
+                      View Report
+                    </button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- Project Plan Update – Week 9 (corresponds to Week 2: Oct 13) -->
+          <!-- Project Plan Update – Week 9 -->
           <div style="margin-top: 3rem; margin-bottom: 3rem">
             <div class="callout info">
               <div class="callout-content">
@@ -3417,7 +3819,7 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Updated the plan to reflect Mac mini and UniFi network
+                    Updated the plan to reflect Raspberry Pi and UniFi network
                     hardware setup.
                   </p>
                   <p
@@ -3427,8 +3829,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Reordered tasks to focus on VLAN configuration and
-                    HomeBridge/Scrypted integration.
+                    Reordered tasks to focus on VLAN configuration and container
+                    deployment on the Raspberry Pi.
                   </p>
                   <p
                     style="
@@ -3497,8 +3899,8 @@
                       color: var(--text-secondary);
                     "
                   >
-                    Adjusted sequence of testing tasks to align with the Mac
-                    mini and UniFi network environment.
+                    Adjusted sequence of testing tasks to align with the
+                    Raspberry Pi and UniFi network environment.
                   </p>
                   <p
                     style="
@@ -3509,6 +3911,70 @@
                   >
                     Highlighted new additions in green within the updated plan
                     screenshots.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Plan Update – Week 14 (Hardware Pivot) -->
+          <div style="margin-top: 3rem; margin-bottom: 4rem">
+            <div class="callout info">
+              <div class="callout-content">
+                <div class="callout-icon">🔄</div>
+                <div class="callout-text">
+                  <h4
+                    style="
+                      margin-bottom: 1rem;
+                      font-family: 'JetBrains Mono', monospace;
+                      color: var(--neon-cyan);
+                    "
+                  >
+                    <strong
+                      >Project Plan Update – Week 14 (Hardware Pivot)</strong
+                    >
+                  </h4>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Executed planned hardware pivot from Raspberry Pi to Mac
+                    Mini + UNAS Pro.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Migrated services and documentation to the new hardware
+                    platform while maintaining all VLAN configurations and
+                    network segmentation.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 1rem;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    Updated all project artifacts and closure site materials to
+                    reflect the final Mac Mini + UNAS Pro architecture.
+                  </p>
+                  <p
+                    style="
+                      margin-bottom: 0;
+                      line-height: 1.8;
+                      color: var(--text-secondary);
+                    "
+                  >
+                    This hardware evolution demonstrated adaptive project
+                    management and risk mitigation as documented in Weeks 8-13
+                    status reports.
                   </p>
                 </div>
               </div>
@@ -3730,233 +4196,250 @@
         // Status report data - add more reports here
         // Note: Week starts on Monday, report date should be the Monday of that week
         const reports = {
-          week1: {
-            date: "Week of October 6",
-            health: "On Track", // Options: "On Track", "At Risk", "Off Track"
-            healthColor: "var(--matrix-green)", // green, yellow (#ffff00), red (#ff0040)
+          week8: {
+            date: "Week 8 (October 14, 2025)",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
             executiveSummary:
-              "Project initialization is complete with all hardware acquired and initial planning documented. Team is aligned on deliverables and timeline. No blockers identified at this stage.",
+              "Project initialization is complete with all core hardware acquired and initial planning documented. The Raspberry Pi is the primary compute node for now, and the team is aligned on deliverables and timeline. No major blockers identified at this stage.",
             accomplishments: [
               "Completed project charter and scope definition",
-              "Acquired Mac Mini and networking equipment",
-              "Set up initial project tracking in Notion",
+              "Finalized the initial homelab architecture using a Raspberry Pi as the main compute host plus existing UniFi gear for networking",
+              "Set up initial project tracking in Notion and captured the first pass of deliverables, milestones, and risks",
             ],
             nextWeekPlan: [
-              "Configure segmented network with VLANs",
-              "Deploy first two VMs (firewall + client)",
-              "Begin HomeKit device integration",
-            ],
-            upcomingMilestones: [
-              "HomeKit Integration - Due Oct 8, 2025",
-              "Segmented Test Environment - Due Oct 15, 2025",
-              "Minecraft Server Deployment - Due Oct 22, 2025",
-            ],
-            issuesRisks: [
-              {
-                issue: "Potential delay in networking gear delivery",
-                mitigation:
-                  "Ordered from multiple vendors as backup; monitoring shipping status daily",
-              },
-              {
-                issue: "Learning curve with VLAN configuration",
-                mitigation:
-                  "Allocated extra time for research; joined online communities for support",
-              },
-            ],
-            changes: [
-              "No changes from baseline plan",
-              "Most hardware already owned; minimal additional cost expected",
-            ],
-          },
-          week2: {
-            date: "Week of October 13",
-            health: "In Progress", // Custom status for "In Progress – Hardware Platform Setup"
-            healthColor: "#ffff00", // yellow
-            executiveSummary:
-              "The HomeLab implementation is using a Mac mini as the primary compute host and UNAS Pro for storage, integrated with the UniFi network (UDM Pro, USW-16-PoE, UniFi APs). Initial setup is underway, including OS configuration and network integration. VLAN segmentation and monitoring tasks have been scheduled.",
-            accomplishments: [
-              "Selected Mac mini as the HomeLab compute platform",
-              "Configured Mac mini with macOS and installed Docker",
-              "Set up UNAS Pro NAS for storage and backups",
-              "Drafted new network layout with VLANs on UDM Pro",
-              "Updated project charter to reflect Mac mini + UniFi implementation",
-            ],
-            nextWeekPlan: [
-              "Configure VLANs on UDM Pro for Main, IoT, and Lab networks",
-              "Begin documenting setup steps and screenshots for the report",
-              "Set up HomeBridge and Scrypted on the Mac mini",
-              "Push documentation and configuration notes to GitHub",
-            ],
-            upcomingMilestones: [
-              "VLAN Segmentation Operational – Due Oct 22 2025",
-              "Monitoring Stack Configured – Due Oct 29 2025",
-              "Vulnerability Lab Setup – Due Nov 5 2025",
-            ],
-            issuesRisks: [
-              {
-                issue:
-                  "Learning curve with UniFi VLAN and firewall configuration",
-                mitigation:
-                  "Allocated extra time for research; using UniFi documentation and community forums",
-              },
-              {
-                issue: "Coordinating services across Mac mini and UNAS Pro",
-                mitigation:
-                  "Document all configurations and test connectivity between systems",
-              },
-            ],
-            changes: [
-              "Finalized hardware plan with Mac mini, UNAS Pro, and UniFi network",
-              "Updated project charter with new Hardware/Resources section",
-              "Updated milestones and tasks to focus on VLAN configuration and service deployment",
-              "Scope and learning outcomes remain unchanged",
-            ],
-          },
-          week3: {
-            date: "Week of October 20",
-            health: "On Track",
-            healthColor: "var(--matrix-green)",
-            executiveSummary:
-              "This week focused on stabilizing the Mac mini environment and configuring VLANs on the UDM Pro. The Notion Kanban board is now live and fully embedded in the site to reflect real-time progress. Documentation for setup and network configuration has been started.",
-            accomplishments: [
-              "Finalized Mac mini system configuration",
-              "Configured VLANs on UDM Pro for network segmentation",
-              "Created GitHub documentation page for network configuration steps",
-              "Embedded Notion Kanban into project site",
-            ],
-            nextWeekPlan: [
-              "Deploy HomeBridge and Scrypted on Mac mini",
-              "Test VLAN isolation and firewall rules",
-              "Begin monitoring setup (UniFi Dashboard + Uptime Kuma)",
-              "Capture screenshots and finalize documentation for next progress report",
-            ],
-            upcomingMilestones: [
-              "Monitoring Stack Configured – Due Oct 29 2025",
-              "Vulnerability Lab Setup – Due Nov 5 2025",
-              "Final Documentation & Presentation – Due Nov 12 2025",
-            ],
-            issuesRisks: [
-              {
-                issue: "VLAN firewall rule complexity",
-                mitigation: "Test each rule incrementally and document results",
-              },
-              {
-                issue: "Service coordination across devices",
-                mitigation:
-                  "Monitor with Uptime Kuma and document dependencies",
-              },
-            ],
-            changes: [
-              "Added live Notion Kanban integration",
-              "Adjusted timeline to include VLAN testing before service deployment",
-              "No budget or scope changes",
-            ],
-          },
-          week4: {
-            date: "Week of November 3",
-            health: "On Track",
-            healthColor: "var(--matrix-green)",
-            executiveSummary:
-              "Progress this week focused on refining documentation, expanding project showcase planning, and configuring services on the Mac mini. The system remains stable with all VLANs operational. Initial monitoring tests have begun, and preparations for Uptime Kuma dashboard deployment and Minecraft server testing are in progress.",
-            accomplishments: [
-              "Updated project charter to include external showcase focus (Reddit + LinkedIn)",
-              "Configured services on Mac mini for stability",
-              "Set up preliminary Uptime Kuma dashboard",
-              "Planned Reddit showcase structure",
-            ],
-            nextWeekPlan: [
-              "Deploy and test Minecraft server on Mac mini",
-              "Finalize UniFi Dashboard + Uptime Kuma setup",
-              "Capture visuals for documentation and Reddit post",
-              "Continue refining UNAS Pro configuration",
+              "Configure segmented network with VLANs on the UniFi side",
+              "Deploy the first two VMs/containers on the Raspberry Pi (firewall + lab client)",
+              "Begin testing basic HomeKit device integration on the existing network",
             ],
             upcomingMilestones: [],
             issuesRisks: [
               {
-                issue: "CPU load spikes from multiple services",
+                issue: "Potential delay in networking gear delivery",
                 mitigation:
-                  "Adjust resource allocation and monitor performance with Uptime Kuma",
+                  "Ordered from multiple vendors as backup and checked lead times",
               },
               {
-                issue: "Time management between testing and documentation",
+                issue:
+                  "Learning curve with VLAN configuration and Pi performance tuning",
                 mitigation:
-                  "Combine documentation updates with each testing phase to reduce workload",
+                  "Allocated extra time for research and joined online communities for Raspberry Pi homelabs and UniFi config tips",
               },
             ],
-            changes: [
-              "Added Uptime Kuma milestone to implementation phase",
-              "Reordered UNAS Pro setup to follow monitoring stage",
-              "Expanded reflection section to include project showcasing component",
+            changes: [],
+          },
+          week9: {
+            date: "Week 9 (October 21, 2025)",
+            health: "In Progress",
+            healthColor: "#ffff00",
+            executiveSummary:
+              "The HomeLab implementation is using a Raspberry Pi as the primary compute host, integrated with the UniFi network for routing and Wi-Fi. Initial OS setup, container platform, and basic monitoring are underway. Network segmentation work has started; deeper tuning is still in progress.",
+            accomplishments: [
+              "Hardened the Raspberry Pi as the HomeLab compute platform (OS updates, basic hardening, and Docker installed)",
+              "Deployed a few test containers to validate performance and stability",
+              "Started experimenting with VLAN layouts on the UniFi gear for Main, IoT, and Lab segments",
+              "Captured notes and early diagrams in the project documentation",
             ],
+            nextWeekPlan: [
+              "Finish VLAN configuration on UniFi for Main, IoT, and Lab networks",
+              "Start wiring the Pi into the segmented network and test connectivity across segments",
+              "Begin drafting requirements and options for future dedicated NAS/storage hardware, but keep Raspberry Pi as the main compute node for now",
+              "Continue capturing screenshots and configuration notes for the project archive",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue:
+                  "Raspberry Pi performance limits for heavier workloads are still unknown",
+                mitigation:
+                  "Keep early services lightweight and monitor CPU/memory closely",
+              },
+              {
+                issue:
+                  "VLAN and firewall misconfiguration risk during early experiments",
+                mitigation:
+                  "Make incremental changes, document each step, and keep a known-good backup config ready to restore if needed",
+              },
+            ],
+            changes: [],
+          },
+          week10: {
+            date: "Week 10 (October 28, 2025)",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "This week focused on stabilizing the Raspberry Pi homelab and tightening up the segmented network. VLANs on the UDM Pro are in a good place, and the Pi is running services reliably. The Notion Kanban board is now part of the regular workflow for tracking tasks and screenshots.",
+            accomplishments: [
+              "Finished Raspberry Pi system configuration",
+              "Tuned VLANs on the UDM Pro for Home, Lab, and IoT segments",
+              "Cleaned up the initial documentation for the Pi setup and started dropping links into Notion",
+              "Drafted a first pass of the screenshot plan for the status page",
+            ],
+            nextWeekPlan: [
+              "Continue testing VLAN isolation and firewall rules",
+              "Stand up basic monitoring for the Pi and key services",
+              "Capture a first round of screenshots and refine the status report format so it is ready for future weeks",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue: "VLAN rule complexity and time spent troubleshooting",
+                mitigation:
+                  "Change one rule at a time, test, and document the result",
+              },
+              {
+                issue: "Learning curve for monitoring tools",
+                mitigation:
+                  "Start simple, then layer in more metrics after the basics are stable",
+              },
+            ],
+            changes: [],
+          },
+          week11: {
+            date: "Week 11 (November 4, 2025)",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "This week I focused on tightening documentation and planning how to showcase the Raspberry Pi homelab. The Pi-based environment is stable across VLANs, and I started lining up monitoring and screenshots that will feed into the final packet.",
+            accomplishments: [
+              "Updated the project charter and notes so they match the current Raspberry Pi setup",
+              "Added more detail to the network and VLAN documentation",
+              "Started a lightweight monitoring view for the Pi and drafted ideas for how to present the homelab in a public-friendly way",
+            ],
+            nextWeekPlan: [
+              "Refine monitoring and logging on the Pi",
+              "Capture cleaner screenshots of the VLAN layout and key services",
+              "Keep hardening the documentation so it is easy to follow later when I move to upgraded hardware",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue:
+                  "CPU and memory headroom on the Pi as more services get added",
+                mitigation:
+                  "Limit what runs on the Pi at once and offload anything heavy later when I upgrade hardware",
+              },
+              {
+                issue: "Time balance between testing and writing",
+                mitigation:
+                  "Document as I go instead of saving it all for the end",
+              },
+            ],
+            changes: [],
           },
           week12: {
-            date: "Week 12",
+            date: "Week 12 (November 11, 2025)",
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "This week I kept working on my Homelab project setup. I continued service testing on the Mac mini, cleaned up the monitoring setup, and updated parts of the methodology diagram and charter. I also started mapping out my screenshot flow for the final deliverables.",
+              "This week I kept building on the Raspberry Pi homelab while shifting more attention toward closure prep. Services are running steadily, monitoring is cleaner, and I started mapping out what I need for Lessons Learned and stakeholder interviews.",
             accomplishments: [
-              "Continued service testing on Mac mini",
-              "Cleaned up monitoring setup",
-              "Updated methodology diagram",
-              "Added details to the charter",
-              "Planned the stakeholder interview",
-              "Started the Lessons Learned outline",
-              "Updated GitHub repo structure",
-              "Started organizing screenshot flow",
+              "Continued service testing on the Pi",
+              "Cleaned up the monitoring layout and labels so issues are easier to spot",
+              "Updated the methodology diagram and charter to better describe the current Pi-based architecture",
+              "Started outlining the Lessons Learned section and planned the flow for the stakeholder interview",
             ],
             nextWeekPlan: [
-              "Wrap up testing, update documentation, prep closure materials, and plan how to share the project publicly.",
+              "Finish tightening the Pi documentation, especially around network design and risks",
+              "Plan how an eventual hardware upgrade would impact the design, but do not implement it yet",
+              "Keep collecting notes that will feed into the closure document and STAR stories",
             ],
-            upcomingMilestones: [
-              "Final service validation",
-              "Lessons Learned",
-              "Stakeholder interview planning",
-            ],
+            upcomingMilestones: [],
             issuesRisks: [
               {
-                issue: "Time constraints for finalizing all documentation",
-                mitigation: "Continue monitoring and optimize where possible",
+                issue: "Limited capacity on the Pi for future growth",
+                mitigation:
+                  'Treat this as the "Phase 1" lab and plan a clean migration path to more powerful hardware',
+              },
+              {
+                issue: "Time constraints as multiple deliverables stack up",
+                mitigation:
+                  "Prioritize core closure artifacts over nice-to-have experiments",
               },
             ],
-            changes: ["More documentation improvements and early closure prep"],
+            changes: [],
           },
           week13: {
-            date: "Week 13",
+            date: "Week 13 (December 2, 2025)",
             health: "On Track",
             healthColor: "var(--matrix-green)",
             executiveSummary:
-              "This week I shifted from technical work into preparing final documentation. I updated my project docs, finished another round of service testing, and organized my files. I also planned out my public GitHub repo and drafted my Reddit post.",
+              "This week shifted heavily into documentation and closure planning while the Raspberry Pi lab stayed in steady-state. I wrapped up most of the service testing on the Pi and started organizing everything for the final packet and future upgrade path.",
             accomplishments: [
-              "Updated project documentation",
-              "Finished service testing on Mac mini",
-              "Organized files for final deliverables",
-              "Planned GitHub repo structure",
-              "Drafted Reddit write up",
-              "Finished stakeholder interview questions",
-              "Reviewed tasks for closure week",
+              "Finalized service testing on the Pi-based environment",
+              "Organized project files, diagrams, and notes so they are ready to drop into the closure site",
+              "Reviewed risks and constraints of staying on the Pi and captured requirements for a future move to a more powerful host",
             ],
             nextWeekPlan: [
-              "Finish Lessons Learned, complete the stakeholder interview, finalize screenshots, and write the closure document.",
+              "Finish the Lessons Learned register and polish the status reports so they tell a clear story from Pi phase to eventual upgrade",
+              "Prepare questions and logistics for the stakeholder interview",
+              "Get ready to document the upcoming hardware change in Week 14",
             ],
-            upcomingMilestones: [
-              "Stakeholder interview",
-              "Closure document",
-              "GitHub repo launch",
-              "Final screenshots",
-              "Lessons Learned",
-              "Final presentation",
-            ],
+            upcomingMilestones: [],
             issuesRisks: [
               {
-                issue: "Time constraints for final deliverables",
+                issue:
+                  "Time pressure on final deliverables plus planning for a hardware upgrade",
                 mitigation:
-                  "Prioritize key deliverables and optimize testing approach",
+                  'Lock the Pi configuration as "good enough" for this phase and focus remaining effort on documentation, interviews, and clear explanation of the future upgrade',
               },
             ],
-            changes: [
-              "Shifted from technical work to documentation and closure tasks",
+            changes: [],
+          },
+          week14: {
+            date: "Week 14 (November 18, 2025)",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "Project is still on track. Core homelab services are stable and ready to carry into the post-semester version of the project.",
+            accomplishments: [
+              "Finalized the hardware pivot from the Raspberry Pi to the Mac Mini plus UNAS Pro for the core homelab stack",
+              "Started moving services and documentation over to the new hardware (HomeKit hub, network segments, NAS storage)",
+              "Updated project artifacts on the closure site so they reflect the new Mac Mini and UNAS Pro instead of the Raspberry Pi",
+              "Continued polishing the closure website content in preparation for stakeholder interviews and final deliverables",
             ],
+            nextWeekPlan: [
+              "Finish migrating any remaining notes or references that still mention the Raspberry Pi",
+              "Lock in the final status of each deliverable on the closure site",
+              "Schedule and prepare for stakeholder interviews",
+              "Start drafting STAR stories that highlight the hardware pivot and risk management decisions",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue:
+                  "Time is tight going into the end of the semester, so the main risk is not leaving enough time for interviews and polishing STAR stories",
+                mitigation:
+                  "No technical blockers after the hardware change, but I need to stay disciplined about scope so I do not try to add more features to the homelab right now",
+              },
+            ],
+            changes: [],
+          },
+          week15: {
+            date: "Week 15 (November 25, 2025)",
+            health: "On Track",
+            healthColor: "var(--matrix-green)",
+            executiveSummary:
+              "Still on track. Very light progress because of Thanksgiving break.",
+            accomplishments: [
+              "Did light planning and reviewed closure tasks",
+              "Confirmed who I will interview for the stakeholder interviews",
+              "Jotted down ideas for STAR stories and final presentation",
+            ],
+            nextWeekPlan: [
+              "Resume full work after the break",
+              "Complete stakeholder interviews and capture notes",
+              "Finalize STAR stories, closure document, and any last polish on the closure site",
+            ],
+            upcomingMilestones: [],
+            issuesRisks: [
+              {
+                issue:
+                  "Main risk is a post-break time crunch to finish interviews, STAR stories, and the final presentation",
+                mitigation: "No new technical issues with the homelab",
+              },
+            ],
+            changes: [],
           },
           // Add more reports here following the same structure
         };
