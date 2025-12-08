@@ -1410,9 +1410,10 @@
             This homelab project demonstrates applied project management through
             hands-on technical implementation. The goal is to build a clean,
             realistic network + security lab that showcases smart home
-            integration, network segmentation, monitoring, service hosting, and
-            vulnerability testing — all integrated with my existing UniFi
-            network infrastructure (UDM Pro, USW-16-PoE, and UniFi APs).
+            integration, network segmentation, monitoring, service hosting,
+            centralized storage, and network monitoring — all integrated with my
+            existing UniFi network infrastructure (UDM Pro, USW-16-PoE, and
+            UniFi APs).
           </p>
 
           <div class="callout success" style="margin-bottom: 2rem">
@@ -1452,8 +1453,8 @@
                   <strong style="color: var(--matrix-green)"
                     >Phase 2 (Week 14+):</strong
                   >
-                  Pivoted to Mac Mini + UNAS Pro for production capacity and
-                  long-term scalability
+                  Pivoted to Mac Mini + UNAS Pro for production capacity,
+                  centralized storage, and long-term scalability
                 </p>
               </div>
             </div>
@@ -1497,11 +1498,11 @@
                     Kuma on the Mac mini to track uptime for key services
                   </div>
                   <div class="feature-item">
-                    <strong
-                      >Vulnerability Lab (DVWA / Metasploit / Kali)</strong
-                    >
-                    – run DVWA, Kali, and Metasploit on the Mac mini using VMs
-                    or containers, isolated inside the Lab VLAN on the UDM Pro
+                    <strong>Network Attached Storage (NAS) – UNAS Pro</strong>
+                    – deploy and configure the UNAS Pro NAS for centralized
+                    storage, backups, and family file management – create a
+                    functional folder structure and set appropriate permissions
+                    – integrate NAS into the segmented network for secure access
                   </div>
                 </div>
               </div>
@@ -1522,17 +1523,28 @@
                     expand smart home automation with additional devices
                   </div>
                   <div class="feature-item">
-                    implement SIEM tool for deeper monitoring and logging
+                    enhance monitoring with improved dashboards and log
+                    aggregation
                   </div>
                   <div class="feature-item">
-                    explore cloud-hosted extensions (AWS, Azure)
+                    explore cloud-hosted extensions (AWS/Azure) for hybrid-lab
+                    scenarios such as off-site NAS backups, cloud-based identity
+                    for the family dashboard, and safe cybersecurity testing
+                    environments
                   </div>
                   <div class="feature-item">
-                    add intrusion detection/prevention tools
+                    add intrusion detection/prevention tools (Suricata, Zeek,
+                    Wazuh)
                   </div>
                   <div class="feature-item">
-                    simulate red/blue team scenarios for advanced security
-                    practice
+                    build a family dashboard system integrated with the UNAS Pro
+                    for centralized access to photos, documents, media, and
+                    shared tools
+                  </div>
+                  <div class="feature-item">
+                    create a custom e-reader/document viewer connected to the
+                    NAS to browse, organize, and read digital books stored in
+                    the home library
                   </div>
                 </div>
               </div>
@@ -1775,8 +1787,8 @@
                     <span class="priority-tag priority-high">🔵 High</span>
                   </td>
                   <td>
-                    Oversees all design, configuration, and documentation.
-                    Tracks progress weekly in Notion and GitHub.
+                    Owns all design, configuration, testing, and documentation;
+                    tracks progress weekly and makes final decisions.
                   </td>
                 </tr>
                 <tr>
@@ -1790,67 +1802,26 @@
                     <span class="priority-tag priority-medium">🟢 Medium</span>
                   </td>
                   <td>
-                    Receives milestone updates and status reports; provides
-                    academic feedback and grading.
+                    Reviews milestones and status reports, provides feedback and
+                    grading; needs clear, concise documentation.
                   </td>
                 </tr>
                 <tr>
-                  <td><strong>Classmates / Peers</strong></td>
-                  <td>Reviewers / Collaborators</td>
-                  <td>Internal</td>
-                  <td><span class="priority-tag priority-low">🟢 Low</span></td>
                   <td>
-                    <span class="priority-tag priority-high">🔵 High</span>
+                    <strong>Household Stakeholders (Daniel + Izzy)</strong>
                   </td>
-                  <td>
-                    Participate in discussion boards, offer peer feedback, and
-                    exchange ideas on system design.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Family Members at Home</strong></td>
-                  <td>Impacted Users</td>
+                  <td>Impacted Users (Family)</td>
                   <td>External</td>
                   <td>
                     <span class="priority-tag priority-medium">🟢 Medium</span>
                   </td>
-                  <td><span class="priority-tag priority-low">🟡 Low</span></td>
-                  <td>
-                    Informed when tests affect network or smart devices;
-                    feedback gathered for usability and downtime.
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>LA County IT Department (Workplace)</strong></td>
-                  <td>Professional Environment</td>
-                  <td>External</td>
                   <td>
                     <span class="priority-tag priority-high">🔵 High</span>
                   </td>
                   <td>
-                    <span class="priority-tag priority-medium">🟢 Medium</span>
-                  </td>
-                  <td>
-                    Potential knowledge cross-application from work to lab; may
-                    inspire process improvements or automation.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong
-                      >Online Tech Communities (Reddit, Discord, Stack
-                      Overflow)</strong
-                    >
-                  </td>
-                  <td>Learning Support</td>
-                  <td>External</td>
-                  <td><span class="priority-tag priority-low">🟢 Low</span></td>
-                  <td>
-                    <span class="priority-tag priority-high">🔵 High</span>
-                  </td>
-                  <td>
-                    Used for troubleshooting, community learning, and best
-                    practices in HomeLab, NAS, and monitoring setups.
+                    Provide feedback on storage organization, downtime, and
+                    Minecraft server experience; inform them of changes that
+                    affect daily use.
                   </td>
                 </tr>
                 <tr>
@@ -1864,15 +1835,75 @@
                     <span class="priority-tag priority-medium">🟢 Medium</span>
                   </td>
                   <td>
-                    Review final documentation and dashboard demos to evaluate
-                    applied skills.
+                    Use the closure site, GitHub repo, and showcase posts to
+                    demonstrate skills; keep documentation professional and
+                    results-focused.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>LA County IT Department (Workplace)</strong></td>
+                  <td>Professional Environment</td>
+                  <td>External</td>
+                  <td>
+                    <span class="priority-tag priority-high">🔵 High</span>
+                  </td>
+                  <td>
+                    <span class="priority-tag priority-medium">🟢 Medium</span>
+                  </td>
+                  <td>
+                    Indirect influence; apply lessons from work to homelab and
+                    vice versa; align practices with workplace standards.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Classmates / Peers</strong></td>
+                  <td>Reviewers / Collaborators</td>
+                  <td>Internal</td>
+                  <td><span class="priority-tag priority-low">🟢 Low</span></td>
+                  <td>
+                    <span class="priority-tag priority-high">🔵 High</span>
+                  </td>
+                  <td>
+                    Share progress in class, participate in peer reviews, and
+                    incorporate their feedback into documentation and closure
+                    materials.
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <strong
-                      >Cybersecurity Frameworks & Best Practices (e.g., NIST,
-                      CIS Benchmarks)</strong
+                      >Online Tech Communities (Reddit, Discord,
+                      StackOverflow)</strong
+                    >
+                  </td>
+                  <td>Learning Support</td>
+                  <td>External</td>
+                  <td><span class="priority-tag priority-low">🟢 Low</span></td>
+                  <td>
+                    <span class="priority-tag priority-high">🔵 High</span>
+                  </td>
+                  <td>
+                    Use for troubleshooting, best practices, and inspiration; no
+                    formal reporting, but credit community support where
+                    appropriate.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>University IT Department</strong></td>
+                  <td>Campus Infrastructure / Context</td>
+                  <td>External</td>
+                  <td><span class="priority-tag priority-low">🟢 Low</span></td>
+                  <td><span class="priority-tag priority-low">🟡 Low</span></td>
+                  <td>
+                    Monitor policies and services that might affect remote
+                    access or lab-related tooling; minimal direct interaction.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong
+                      >Cybersecurity Framework Bodies (NIST, CIS
+                      Benchmarks)</strong
                     >
                   </td>
                   <td>Standards Reference</td>
@@ -1882,9 +1913,8 @@
                   </td>
                   <td><span class="priority-tag priority-low">🟡 Low</span></td>
                   <td>
-                    Follow guidelines for secure network segmentation,
-                    monitoring, and vulnerability management; no direct
-                    interaction required.
+                    Use their guidelines for network segmentation, monitoring,
+                    and secure configuration; no direct interaction required.
                   </td>
                 </tr>
               </tbody>
@@ -1903,39 +1933,217 @@
           <div class="collapse-indicator">▶</div>
         </div>
         <div class="section-content">
-          <div
-            style="
-              background: var(--bg-card);
-              padding: 1rem;
+          <style>
+            .power-interest-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-template-rows: 1fr 1fr;
+              gap: 0;
+              max-width: 900px;
+              margin: 0 auto;
+              border: 2px solid var(--matrix-green);
               border-radius: var(--border-radius);
-              border: 1px solid var(--text-muted);
-              backdrop-filter: blur(20px);
+              overflow: hidden;
+              box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+            }
+
+            .pi-quadrant {
+              background: rgba(10, 10, 20, 0.95);
+              border: 1px solid rgba(0, 255, 65, 0.3);
+              padding: 1.5rem;
+              min-height: 250px;
+              display: flex;
+              flex-direction: column;
+            }
+
+            .pi-quadrant-header {
+              font-family: "JetBrains Mono", monospace;
+              font-size: 1rem;
+              font-weight: 700;
+              color: var(--neon-cyan);
+              text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+              margin-bottom: 0.5rem;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+
+            .pi-quadrant-subtitle {
+              font-family: "Space Mono", monospace;
+              font-size: 0.75rem;
+              color: var(--laser-orange);
+              text-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+              margin-bottom: 1rem;
+              font-style: italic;
+            }
+
+            .pi-stakeholders {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              flex-grow: 1;
+            }
+
+            .pi-stakeholders li {
+              font-family: "JetBrains Mono", monospace;
+              font-size: 0.85rem;
+              color: var(--text-primary);
+              padding: 0.5rem 0.75rem;
+              margin-bottom: 0.5rem;
+              background: rgba(0, 255, 65, 0.05);
+              border-left: 3px solid var(--matrix-green);
+              border-radius: 4px;
+              transition: all 0.3s ease;
+            }
+
+            .pi-stakeholders li:hover {
+              background: rgba(0, 255, 65, 0.15);
+              border-left-color: var(--neon-cyan);
+              box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+              transform: translateX(5px);
+            }
+
+            .pi-axis-labels {
+              display: grid;
+              grid-template-areas:
+                ". top"
+                "left grid";
+              grid-template-columns: 80px 1fr;
+              grid-template-rows: 40px 1fr;
+              max-width: 900px;
+              margin: 2rem auto;
+              gap: 0.5rem;
+            }
+
+            .pi-axis-top {
+              grid-area: top;
               text-align: center;
+              font-family: "JetBrains Mono", monospace;
+              font-size: 0.9rem;
+              color: var(--electric-purple);
+              text-shadow: 0 0 10px rgba(191, 0, 255, 0.5);
+              font-weight: 600;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .pi-axis-left {
+              grid-area: left;
+              writing-mode: vertical-rl;
+              text-orientation: mixed;
+              transform: rotate(180deg);
+              text-align: center;
+              font-family: "JetBrains Mono", monospace;
+              font-size: 0.9rem;
+              color: var(--electric-purple);
+              text-shadow: 0 0 10px rgba(191, 0, 255, 0.5);
+              font-weight: 600;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .pi-grid-wrapper {
+              grid-area: grid;
+            }
+
+            @media (max-width: 768px) {
+              .power-interest-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+              }
+
+              .pi-quadrant {
+                min-height: 200px;
+              }
+
+              .pi-axis-labels {
+                grid-template-areas:
+                  "top"
+                  "grid";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+              }
+
+              .pi-axis-left {
+                display: none;
+              }
+
+              .pi-axis-top {
+                writing-mode: horizontal-tb;
+              }
+            }
+          </style>
+
+          <h4
+            style="
+              margin-bottom: 2rem;
+              text-align: center;
+              color: var(--neon-cyan);
+              font-weight: 600;
+              font-family: 'JetBrains Mono', monospace;
             "
           >
-            <h4
-              style="
-                margin-bottom: 1rem;
-                color: var(--neon-cyan);
-                font-weight: 600;
-                font-family: 'JetBrains Mono', monospace;
-              "
-            >
-              📊 stakeholder power-interest analysis
-            </h4>
-            <img
-              src="img/PIgrid.png"
-              alt="Power-Interest Grid showing stakeholder positioning based on their power and interest levels"
-              style="
-                max-width: 600px;
-                width: 100%;
-                height: auto;
-                border-radius: var(--border-radius-small);
-                cursor: pointer;
-                border: 1px solid var(--text-muted);
-              "
-              onclick="openModal('img/PIgrid.png')"
-            />
+            📊 stakeholder power-interest analysis
+          </h4>
+
+          <div class="pi-axis-labels">
+            <div class="pi-axis-top">Interest →</div>
+            <div class="pi-axis-left">Power →</div>
+            <div class="pi-grid-wrapper">
+              <div class="power-interest-grid">
+                <!-- Keep Satisfied: High Power, Low Interest -->
+                <div class="pi-quadrant">
+                  <div class="pi-quadrant-header">Keep Satisfied</div>
+                  <div class="pi-quadrant-subtitle">
+                    High Power, Low Interest
+                  </div>
+                  <ul class="pi-stakeholders">
+                    <li>Future Employers / Recruiters</li>
+                    <li>LA County IT Department</li>
+                    <li>Cybersecurity Standards Bodies (NIST, CIS)</li>
+                  </ul>
+                </div>
+
+                <!-- Manage Closely: High Power, High Interest -->
+                <div class="pi-quadrant">
+                  <div class="pi-quadrant-header">Manage Closely</div>
+                  <div class="pi-quadrant-subtitle">
+                    High Power, High Interest
+                  </div>
+                  <ul class="pi-stakeholders">
+                    <li>Wendy (Project Owner)</li>
+                    <li>Instructor (Professor Espinoza)</li>
+                    <li>Household Stakeholders (Daniel + Izzy)</li>
+                  </ul>
+                </div>
+
+                <!-- Monitor: Low Power, Low Interest -->
+                <div class="pi-quadrant">
+                  <div class="pi-quadrant-header">Monitor</div>
+                  <div class="pi-quadrant-subtitle">
+                    Low Power, Low Interest
+                  </div>
+                  <ul class="pi-stakeholders">
+                    <li>University IT Department</li>
+                  </ul>
+                </div>
+
+                <!-- Keep Informed: Low Power, High Interest -->
+                <div class="pi-quadrant">
+                  <div class="pi-quadrant-header">Keep Informed</div>
+                  <div class="pi-quadrant-subtitle">
+                    Low Power, High Interest
+                  </div>
+                  <ul class="pi-stakeholders">
+                    <li>Classmates / Peers</li>
+                    <li>
+                      Online Tech Communities (Reddit, Discord, StackOverflow)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
