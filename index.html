@@ -1317,7 +1317,7 @@
             <span class="stat-label">deliverables</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">$0–200</span>
+            <span class="stat-number">$1,500</span>
             <span class="stat-label">new cost</span>
           </div>
           <div class="stat-card">
@@ -2017,26 +2017,29 @@
                   <td>
                     Use UniFi's built-in dashboard for real-time monitoring of
                     WAN, switch, APs, and clients, and run Uptime Kuma on the
-                    Mac mini to track uptime for key services like the Minecraft
-                    server, HomeBridge, Scrypted, and the UNAS Pro.
+                    Mac mini to track uptime for key services. This fully
+                    replaces the earlier Grafana/Prometheus dashboard plan.
                   </td>
-                  <td>This replaces the old Grafana/Prometheus plan.</td>
+                  <td>
+                    Demonstrates system monitoring and service reliability
+                    tracking using existing infrastructure.
+                  </td>
                 </tr>
                 <tr>
                   <td>
-                    <strong
-                      >Vulnerability Lab (DVWA / Metasploit / Kali)</strong
-                    >
+                    <strong>Network Attached Storage (NAS)</strong>
                   </td>
                   <td>Tangible</td>
                   <td>
-                    Run DVWA, Kali, and Metasploit on the Mac mini using VMs or
-                    containers, isolated inside the Lab VLAN created on the UDM
-                    Pro.
+                    Deploy a UNAS Pro NAS with an 8 TB drive to centralize
+                    family storage, lab files, and backups. Configure shares,
+                    permissions, SMB access, and a clean folder structure that
+                    supports both personal and homelab use.
                   </td>
                   <td>
-                    This lab is for practicing offensive and defensive
-                    techniques in a controlled environment.
+                    NAS is operational, accessible on the LAN, and file access
+                    is tested from multiple devices. Folder structure
+                    established and ready for Phase 2 improvements.
                   </td>
                 </tr>
               </tbody>
@@ -2092,7 +2095,15 @@
                 </tr>
                 <tr>
                   <td><span class="code-tag">T2</span></td>
-                  <td>setup mac mini + unas pro + unifi network</td>
+                  <td>
+                    setup mac mini + unas pro + unifi network
+                    <br /><em
+                      style="font-size: 0.85em; color: var(--text-secondary)"
+                    >
+                      Note: Raspberry Pi (Phase 1) was replaced by the Mac mini
+                      + UNAS Pro in Week 14 due to performance limitations.
+                    </em>
+                  </td>
                   <td>2 days</td>
                   <td>T1</td>
                 </tr>
@@ -2122,13 +2133,25 @@
                 </tr>
                 <tr>
                   <td><span class="code-tag">T7</span></td>
-                  <td>deploy vulnerability lab (dvwa, metasploit)</td>
+                  <td>
+                    deploy UNAS Pro NAS + configure storage (SMB, permissions,
+                    folder structure)
+                  </td>
                   <td>5 days</td>
                   <td>T3</td>
                 </tr>
                 <tr>
                   <td><span class="code-tag">T8</span></td>
-                  <td>run cybersecurity practice/attack-defense scenarios</td>
+                  <td>
+                    run cybersecurity practice/attack-defense scenarios
+                    <br /><em
+                      style="font-size: 0.85em; color: var(--text-secondary)"
+                    >
+                      *Note: Full attack/defense scenarios were deprioritized
+                      when the Vulnerability Lab deliverable was replaced by the
+                      NAS deliverable in Week 14.
+                    </em>
+                  </td>
                   <td>4 days</td>
                   <td>T7</td>
                 </tr>
@@ -2146,7 +2169,7 @@
             <div class="callout-content">
               <div class="callout-icon">⚡</div>
               <div class="callout-text">
-                <strong>critical path:</strong> T1 → T2 → T3 → T7 → T8 → T9
+                <strong>critical path:</strong> T1 → T2 → T3 → T7 → T9
               </div>
             </div>
           </div>
@@ -2168,32 +2191,39 @@
               <thead>
                 <tr>
                   <th>item</th>
-                  <th>estimated cost</th>
+                  <th>cost</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Mac mini (compute host)</td>
-                  <td>Already owned</td>
+                  <td>$700</td>
                 </tr>
                 <tr>
-                  <td>UNAS Pro NAS</td>
-                  <td>Already owned</td>
+                  <td>UNAS Pro NAS chassis</td>
+                  <td>$500</td>
                 </tr>
                 <tr>
-                  <td>UniFi network (UDM Pro, USW-16-PoE, APs, G4 Doorbell)</td>
+                  <td>8 TB HDD for UNAS Pro</td>
+                  <td>$300</td>
+                </tr>
+                <tr>
+                  <td>
+                    UniFi network equipment (UDM Pro, USW-16-PoE, APs, G4
+                    Doorbell)
+                  </td>
                   <td>Already owned</td>
                 </tr>
                 <tr>
                   <td>
-                    Smart home devices (Hue Bridge, Apple TV, HomePod Mini,
+                    Smart home devices (Apple TV, HomePod Mini, Hue Bridge,
                     Ecobee, Wiz lights)
                   </td>
                   <td>Already owned</td>
                 </tr>
                 <tr>
-                  <td>(Optional) Additional SSD or HDDs for the UNAS Pro</td>
-                  <td>$100–200</td>
+                  <td>Cables, adapters, misc accessories</td>
+                  <td>$20–40</td>
                 </tr>
                 <tr
                   style="
@@ -2201,12 +2231,17 @@
                     background: rgba(0, 255, 65, 0.1);
                   "
                 >
-                  <td><strong>total new cost</strong></td>
-                  <td><strong>$0–200</strong></td>
+                  <td><strong>Total New Cost (Phase 2 Upgrade)</strong></td>
+                  <td><strong>~$1,500</strong></td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p class="text-content" style="margin-top: 1.5rem">
+            A hardware pivot in Week 14 was necessary due to Raspberry Pi
+            performance limits. The upgrade increased cost but added stability,
+            performance, and long-term scalability.
+          </p>
         </div>
       </div>
 
@@ -2281,7 +2316,7 @@
                 /* Timeline Grid - 7 columns × 4 rows */
                 .timeline-grid {
                   display: grid;
-                  grid-template-columns: 160px repeat(7, 1fr);
+                  grid-template-columns: 130px repeat(7, 1fr);
                   grid-template-rows: auto repeat(3, minmax(160px, 1fr));
                   gap: 10px;
                   align-items: stretch;
@@ -2377,7 +2412,7 @@
                   border: 1px solid rgba(0, 255, 65, 0.3);
                   padding: 0.85rem 0.9rem;
                   font-family: "JetBrains Mono", monospace;
-                  font-size: 0.75rem;
+                  font-size: 0.65rem;
                   color: var(--text-primary);
                   line-height: 1.5;
                   display: flex;
@@ -3099,7 +3134,7 @@
                 </div>
                 <div class="hlm-card r2 c2">
                   <ul>
-                    <li>Setup Raspberry Pi 4B (8GB RAM)</li>
+                    <li>Setup Raspberry Pi 4B prototype (8GB RAM)</li>
                     <li>Configure UniFi network (UDM Pro, switch, APs)</li>
                     <li>Plan VLAN segmentation</li>
                   </ul>
@@ -3108,12 +3143,12 @@
                   <ul>
                     <li>Configure VLANs on UDM Pro</li>
                     <li>Setup firewall rules for isolation</li>
-                    <li>Deploy test containers on Raspberry Pi</li>
+                    <li>Deploy test containers on Pi prototype</li>
                   </ul>
                 </div>
                 <div class="hlm-card r2 c4">
                   <ul>
-                    <li>Deploy HomeBridge on Raspberry Pi</li>
+                    <li>Deploy HomeBridge on Pi prototype</li>
                     <li>Test VLAN isolation & monitoring</li>
                     <li>Document Pi performance limits</li>
                   </ul>
@@ -3134,7 +3169,7 @@
                 </div>
                 <div class="hlm-card r2 c7">
                   <ul>
-                    <li>Final service testing</li>
+                    <li>Final service testing on Mac mini</li>
                     <li>System backups</li>
                     <li>Demo recording</li>
                   </ul>
@@ -3153,14 +3188,14 @@
                 </div>
                 <div class="hlm-card r3 c2">
                   <ul>
-                    <li>Draft Project Charter v3 (Raspberry Pi + UniFi)</li>
+                    <li>Draft Project Charter v3 (Pi prototype + UniFi)</li>
                     <li>Create GitHub repo & project site</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c3">
                   <ul>
                     <li>Update network/VLAN docs</li>
-                    <li>Document Pi setup & testing</li>
+                    <li>Document Pi prototype setup & testing</li>
                   </ul>
                 </div>
                 <div class="hlm-card r3 c4">
@@ -3179,7 +3214,7 @@
                 </div>
                 <div class="hlm-card r3 c6">
                   <ul>
-                    <li>Finalize dashboards & monitoring</li>
+                    <li>Finalize Mac mini dashboards & monitoring</li>
                     <li>Complete technical documentation</li>
                   </ul>
                 </div>
@@ -3206,13 +3241,13 @@
                 </div>
                 <div class="hlm-card r4 c3">
                   <ul>
-                    <li>Test VLAN connectivity on Pi</li>
+                    <li>Test VLAN connectivity on Pi prototype</li>
                     <li>Submit Week 9-10 reports</li>
                   </ul>
                 </div>
                 <div class="hlm-card r4 c4">
                   <ul>
-                    <li>Service validation on Pi</li>
+                    <li>Service validation on Pi prototype</li>
                     <li>Submit Week 11-13 reports</li>
                   </ul>
                 </div>
@@ -3224,7 +3259,7 @@
                 </div>
                 <div class="hlm-card r4 c6">
                   <ul>
-                    <li>End-to-end system testing</li>
+                    <li>End-to-end system testing on Mac mini</li>
                     <li>Submit Week 15 report</li>
                   </ul>
                 </div>
